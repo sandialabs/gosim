@@ -1,0 +1,800 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version="0.6" generator="Osmosis 0.39">
+  <node id="297227137" version="2" timestamp="2010-06-07T02:39:01Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6750669" lon="-121.7726854"/>
+  <node id="53029681" version="5" timestamp="2011-01-09T02:07:14Z" uid="201724" user="mk408" changeset="6911342" lat="37.6770301" lon="-121.7693981">
+    <tag k="highway" v="mini_roundabout"/>
+  </node>
+  <node id="53044286" version="11" timestamp="2011-01-09T02:07:05Z" uid="201724" user="mk408" changeset="6911342" lat="37.6816306" lon="-121.7687838"/>
+  <node id="1093171031" version="1" timestamp="2011-01-09T04:18:47Z" uid="201724" user="mk408" changeset="6911695" lat="37.6760919" lon="-121.7790498"/>
+  <node id="53146562" version="4" timestamp="2010-02-27T20:47:14Z" uid="123633" user="stevea" changeset="3992529" lat="37.6817473" lon="-121.7679687"/>
+  <node id="53087296" version="5" timestamp="2011-01-09T04:18:58Z" uid="201724" user="mk408" changeset="6911695" lat="37.6744315" lon="-121.7594275"/>
+  <node id="766205503" version="1" timestamp="2010-06-07T02:36:12Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6791132" lon="-121.7773885"/>
+  <node id="53022482" version="6" timestamp="2011-01-09T02:07:15Z" uid="201724" user="mk408" changeset="6911342" lat="37.6828286" lon="-121.7691972"/>
+  <node id="53077689" version="6" timestamp="2011-01-09T04:18:56Z" uid="201724" user="mk408" changeset="6911695" lat="37.676146" lon="-121.7760044"/>
+  <node id="53044280" version="11" timestamp="2011-01-09T04:18:59Z" uid="201724" user="mk408" changeset="6911695" lat="37.6799266" lon="-121.7744587"/>
+  <node id="1093170945" version="1" timestamp="2011-01-09T04:18:44Z" uid="201724" user="mk408" changeset="6911695" lat="37.6801435" lon="-121.7737282"/>
+  <node id="53069798" version="5" timestamp="2010-06-07T02:39:07Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6805481" lon="-121.7668754"/>
+  <node id="53077697" version="5" timestamp="2009-09-16T05:28:09Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.6780083" lon="-121.7698702"/>
+  <node id="53090668" version="5" timestamp="2011-01-09T04:19:38Z" uid="201724" user="mk408" changeset="6911695" lat="37.6744317" lon="-121.7576766"/>
+  <node id="1094827767" version="1" timestamp="2011-01-09T18:37:17Z" uid="201724" user="mk408" changeset="6918821" lat="37.6696667" lon="-121.7491897">
+    <tag k="highway" v="crossing"/>
+  </node>
+  <node id="53024465" version="6" timestamp="2011-01-09T02:07:15Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799337" lon="-121.7452501"/>
+  <node id="1093171046" version="1" timestamp="2011-01-09T04:18:47Z" uid="201724" user="mk408" changeset="6911695" lat="37.6760565" lon="-121.7792225"/>
+  <node id="53047890" version="4" timestamp="2010-06-07T03:10:34Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6748096" lon="-121.765551"/>
+  <node id="53018267" version="6" timestamp="2011-01-09T04:19:28Z" uid="201724" user="mk408" changeset="6911695" lat="37.6783725" lon="-121.7714394"/>
+  <node id="53067298" version="5" timestamp="2010-06-07T03:10:34Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6751798" lon="-121.7643294"/>
+  <node id="53077692" version="5" timestamp="2010-06-07T02:39:01Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6768652" lon="-121.7735638"/>
+  <node id="53131035" version="3" timestamp="2010-02-27T20:47:08Z" uid="123633" user="stevea" changeset="3992529" lat="37.6778923" lon="-121.7628027"/>
+  <node id="53029785" version="4" timestamp="2009-09-16T05:14:34Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.6781355" lon="-121.7657361"/>
+  <node id="53084312" version="5" timestamp="2009-09-16T05:29:23Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.6730112" lon="-121.7686644"/>
+  <node id="53131036" version="5" timestamp="2010-02-27T20:47:08Z" uid="123633" user="stevea" changeset="3992529" lat="37.678181" lon="-121.7624004"/>
+  <node id="53146582" version="3" timestamp="2009-09-16T05:44:34Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.668882" lon="-121.74795"/>
+  <node id="1319725160" version="1" timestamp="2011-06-11T05:20:52Z" uid="468676" user="Alexandre Orlov" changeset="8402691" lat="37.6756723" lon="-121.7773209"/>
+  <node id="53024471" version="6" timestamp="2011-01-09T02:07:20Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799165" lon="-121.7391666"/>
+  <node id="53112091" version="5" timestamp="2010-06-07T02:39:00Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6790508" lon="-121.7746048"/>
+  <node id="53044285" version="9" timestamp="2010-06-07T02:36:08Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6811857" lon="-121.7699581"/>
+  <node id="416779911" version="1" timestamp="2009-06-07T04:44:14Z" uid="81024" user="wallclimber21" changeset="1443885" lat="37.6787944" lon="-121.7635388"/>
+  <node id="53029683" version="4" timestamp="2010-06-07T03:10:38Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6777372" lon="-121.7669396"/>
+  <node id="53024479" version="9" timestamp="2011-01-09T02:07:16Z" uid="201724" user="mk408" changeset="6911342" lat="37.6798992" lon="-121.7330247"/>
+  <node id="53018268" version="5" timestamp="2009-10-28T01:09:15Z" uid="38130" user="skydivehein" changeset="2970349" lat="37.6776279" lon="-121.771089"/>
+  <node id="53029790" version="4" timestamp="2009-08-17T03:02:00Z" uid="147510" user="woodpeck_fixbot" changeset="2172708" lat="37.6795824" lon="-121.7626805"/>
+  <node id="766205508" version="1" timestamp="2010-06-07T02:36:12Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6785094" lon="-121.7789007"/>
+  <node id="53098184" version="5" timestamp="2010-06-07T03:10:34Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6773046" lon="-121.7610431"/>
+  <node id="53029673" version="5" timestamp="2011-01-09T04:19:37Z" uid="201724" user="mk408" changeset="6911695" lat="37.6751087" lon="-121.7756053"/>
+  <node id="53044273" version="14" timestamp="2011-01-09T04:19:39Z" uid="201724" user="mk408" changeset="6911695" lat="37.6790143" lon="-121.7773424"/>
+  <node id="53069786" version="4" timestamp="2009-08-17T03:09:29Z" uid="147510" user="woodpeck_fixbot" changeset="2172708" lat="37.6772296" lon="-121.7779495"/>
+  <node id="416779848" version="1" timestamp="2009-06-07T04:39:20Z" uid="81024" user="wallclimber21" changeset="1443885" lat="37.6744317" lon="-121.7574274"/>
+  <node id="53084305" version="5" timestamp="2011-01-09T04:19:47Z" uid="201724" user="mk408" changeset="6911695" lat="37.6787456" lon="-121.7702071"/>
+  <node id="53024454" version="5" timestamp="2011-01-09T02:07:14Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799521" lon="-121.7517732"/>
+  <node id="416779912" version="2" timestamp="2010-02-27T20:47:08Z" uid="123633" user="stevea" changeset="3992529" lat="37.6780027" lon="-121.762454"/>
+  <node id="53077702" version="5" timestamp="2010-02-27T20:47:06Z" uid="123633" user="stevea" changeset="3992529" lat="37.6794632" lon="-121.7649217"/>
+  <node id="53024437" version="6" timestamp="2011-01-09T02:07:16Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799867" lon="-121.7640507"/>
+  <node id="53042889" version="5" timestamp="2010-06-07T02:36:14Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6761412" lon="-121.77881"/>
+  <node id="416779792" version="1" timestamp="2009-06-07T04:36:03Z" uid="81024" user="wallclimber21" changeset="1443885" lat="37.6745282" lon="-121.7570929"/>
+  <node id="53047892" version="5" timestamp="2011-01-09T04:19:17Z" uid="201724" user="mk408" changeset="6911695" lat="37.6744308" lon="-121.7653756"/>
+  <node id="53047883" version="5" timestamp="2010-06-07T03:10:38Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6787336" lon="-121.7674122"/>
+  <node id="53069797" version="5" timestamp="2010-06-07T02:36:08Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6798145" lon="-121.7693236"/>
+  <node id="53106788" version="5" timestamp="2011-01-09T04:19:36Z" uid="201724" user="mk408" changeset="6911695" lat="37.679849" lon="-121.7665621"/>
+  <node id="53024467" version="6" timestamp="2011-01-09T02:07:09Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799262" lon="-121.7425946"/>
+  <node id="196889651" version="5" timestamp="2010-06-07T02:36:47Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6786802" lon="-121.7784452"/>
+  <node id="297226662" version="2" timestamp="2008-09-15T14:55:29Z" uid="28775" user="StellanL" changeset="642764" lat="37.6844004" lon="-121.761021"/>
+  <node id="53018262" version="6" timestamp="2010-06-07T04:04:46Z" uid="28775" user="StellanL" changeset="4924531" lat="37.6811719" lon="-121.7727656">
+    <tag k="highway" v="turning_circle"/>
+  </node>
+  <node id="53024478" version="7" timestamp="2011-01-09T02:07:00Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799055" lon="-121.7352841"/>
+  <node id="53047888" version="4" timestamp="2010-06-07T03:10:34Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6758232" lon="-121.7660318"/>
+  <node id="53065590" version="6" timestamp="2010-06-07T02:36:28Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6845602" lon="-121.7604959"/>
+  <node id="53138793" version="8" timestamp="2010-06-07T02:36:23Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6825254" lon="-121.7719813">
+    <tag k="highway" v="traffic_signals"/>
+  </node>
+  <node id="53114463" version="4" timestamp="2010-02-27T20:47:10Z" uid="123633" user="stevea" changeset="3992529" lat="37.6834073" lon="-121.7622019"/>
+  <node id="433970526" version="1" timestamp="2009-07-04T17:05:47Z" uid="141975" user="larry104" changeset="1731008" lat="37.6697478" lon="-121.7493177"/>
+  <node id="53114457" version="6" timestamp="2010-06-07T02:36:27Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6809903" lon="-121.7646535"/>
+  <node id="53018266" version="7" timestamp="2010-06-07T02:36:22Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6790753" lon="-121.7717903"/>
+  <node id="53077701" version="4" timestamp="2009-09-16T05:28:10Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.6791069" lon="-121.7661995"/>
+  <node id="53114456" version="5" timestamp="2009-10-27T23:55:31Z" uid="190608" user="cabjanol" changeset="2970026" lat="37.6801753" lon="-121.7654842">
+    <tag k="highway" v="traffic_signals"/>
+  </node>
+  <node id="53090649" version="6" timestamp="2011-01-09T04:19:10Z" uid="201724" user="mk408" changeset="6911695" lat="37.6744301" lon="-121.7726682"/>
+  <node id="53047878" version="7" timestamp="2010-06-07T03:10:37Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6801815" lon="-121.7680991"/>
+  <node id="53126388" version="6" timestamp="2010-06-07T04:04:52Z" uid="28775" user="StellanL" changeset="4924531" lat="37.675946" lon="-121.7589382"/>
+  <node id="53040018" version="4" timestamp="2009-08-17T03:04:10Z" uid="147510" user="woodpeck_fixbot" changeset="2172708" lat="37.67003" lon="-121.749763"/>
+  <node id="53090658" version="5" timestamp="2011-01-09T04:19:12Z" uid="201724" user="mk408" changeset="6911695" lat="37.6744308" lon="-121.7661925"/>
+  <node id="53024445" version="7" timestamp="2011-01-09T02:07:13Z" uid="201724" user="mk408" changeset="6911342" lat="37.679977" lon="-121.7606066"/>
+  <node id="53112083" version="4" timestamp="2010-02-27T20:47:09Z" uid="123633" user="stevea" changeset="3992529" lat="37.6814713" lon="-121.7675234"/>
+  <node id="53044287" version="9" timestamp="2011-01-09T02:07:19Z" uid="201724" user="mk408" changeset="6911342" lat="37.6820329" lon="-121.7683919"/>
+  <node id="1093170875" version="1" timestamp="2011-01-09T04:18:42Z" uid="201724" user="mk408" changeset="6911695" lat="37.6759749" lon="-121.7796195"/>
+  <node id="53090651" version="4" timestamp="2011-01-09T04:18:58Z" uid="201724" user="mk408" changeset="6911695" lat="37.6744302" lon="-121.7713636"/>
+  <node id="53042893" version="5" timestamp="2011-01-09T04:19:37Z" uid="201724" user="mk408" changeset="6911695" lat="37.6759364" lon="-121.7781246"/>
+  <node id="53018269" version="4" timestamp="2009-10-28T01:09:15Z" uid="38130" user="skydivehein" changeset="2970349" lat="37.6766497" lon="-121.7706426"/>
+  <node id="53084307" version="4" timestamp="2009-09-16T05:29:23Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.6760859" lon="-121.7689432"/>
+  <node id="53090661" version="5" timestamp="2011-01-09T04:19:24Z" uid="201724" user="mk408" changeset="6911695" lat="37.674431" lon="-121.7639765"/>
+  <node id="1093170979" version="1" timestamp="2011-01-09T04:18:45Z" uid="201724" user="mk408" changeset="6911695" lat="37.6784736" lon="-121.7788245"/>
+  <node id="53029674" version="7" timestamp="2011-01-09T04:19:49Z" uid="201724" user="mk408" changeset="6911695" lat="37.6755598" lon="-121.7743262"/>
+  <node id="53131032" version="3" timestamp="2009-08-17T03:21:38Z" uid="147510" user="woodpeck_fixbot" changeset="2172708" lat="37.67643" lon="-121.767764"/>
+  <node id="766216985" version="1" timestamp="2010-06-07T03:10:37Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6806665" lon="-121.7664803"/>
+  <node id="53018264" version="11" timestamp="2011-01-09T02:07:02Z" uid="201724" user="mk408" changeset="6911342" lat="37.6805194" lon="-121.772474"/>
+  <node id="53098176" version="4" timestamp="2009-09-16T05:34:23Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.6754569" lon="-121.7672654"/>
+  <node id="53084311" version="5" timestamp="2011-01-09T04:19:04Z" uid="201724" user="mk408" changeset="6911695" lat="37.6744305" lon="-121.7687029"/>
+  <node id="53044272" version="11" timestamp="2011-01-09T04:19:09Z" uid="201724" user="mk408" changeset="6911695" lat="37.6784181" lon="-121.7790092"/>
+  <node id="53030121" version="5" timestamp="2009-08-17T03:02:05Z" uid="147510" user="woodpeck_fixbot" changeset="2172708" lat="37.6843257" lon="-121.7612356"/>
+  <node id="53024473" version="6" timestamp="2011-01-09T02:07:10Z" uid="201724" user="mk408" changeset="6911342" lat="37.679913" lon="-121.7379172"/>
+  <node id="53018265" version="6" timestamp="2010-06-07T02:36:22Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6797952" lon="-121.7721229"/>
+  <node id="53077699" version="4" timestamp="2009-09-16T05:28:09Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.678348" lon="-121.768617"/>
+  <node id="53044283" version="11" timestamp="2011-01-09T02:07:09Z" uid="201724" user="mk408" changeset="6911342" lat="37.6809045" lon="-121.771226"/>
+  <node id="53090670" version="4" timestamp="2009-09-16T05:31:31Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.6746709" lon="-121.7569384"/>
+  <node id="53024443" version="6" timestamp="2011-01-09T02:07:21Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799787" lon="-121.7611956"/>
+  <node id="53024470" version="6" timestamp="2011-01-09T02:07:06Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799185" lon="-121.7398468"/>
+  <node id="53067402" version="5" timestamp="2011-01-09T04:19:37Z" uid="201724" user="mk408" changeset="6911695" lat="37.6744303" lon="-121.7707849"/>
+  <node id="53084309" version="4" timestamp="2009-08-17T03:12:04Z" uid="147510" user="woodpeck_fixbot" changeset="2172708" lat="37.6756171" lon="-121.7687458"/>
+  <node id="53098179" version="5" timestamp="2010-06-07T03:10:34Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6761885" lon="-121.7648018"/>
+  <node id="53146575" version="3" timestamp="2009-09-16T05:44:34Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.6727359" lon="-121.7539477"/>
+  <node id="53090662" version="5" timestamp="2011-01-09T04:19:34Z" uid="201724" user="mk408" changeset="6911695" lat="37.6744312" lon="-121.7617192"/>
+  <node id="53029677" version="5" timestamp="2010-06-07T02:39:01Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6759296" lon="-121.7730888"/>
+  <node id="53029679" version="5" timestamp="2011-01-09T04:19:49Z" uid="201724" user="mk408" changeset="6911695" lat="37.6762864" lon="-121.7718414"/>
+  <node id="1093170890" version="1" timestamp="2011-01-09T04:18:42Z" uid="201724" user="mk408" changeset="6911695" lat="37.678395" lon="-121.7789219"/>
+  <node id="53069787" version="8" timestamp="2011-01-09T04:19:48Z" uid="201724" user="mk408" changeset="6911695" lat="37.677608" lon="-121.7766864"/>
+  <node id="1093170983" version="1" timestamp="2011-01-09T04:18:45Z" uid="201724" user="mk408" changeset="6911695" lat="37.6762602" lon="-121.7784165"/>
+  <node id="53003849" version="5" timestamp="2011-01-09T04:19:39Z" uid="201724" user="mk408" changeset="6911695" lat="37.6744313" lon="-121.7610166"/>
+  <node id="53112092" version="5" timestamp="2011-01-09T04:19:49Z" uid="201724" user="mk408" changeset="6911695" lat="37.6794199" lon="-121.7733742"/>
+  <node id="53103348" version="6" timestamp="2011-01-09T04:19:28Z" uid="201724" user="mk408" changeset="6911695" lat="37.675976" lon="-121.7798039"/>
+  <node id="53114449" version="6" timestamp="2011-01-09T04:19:05Z" uid="201724" user="mk408" changeset="6911695" lat="37.6776255" lon="-121.7739069"/>
+  <node id="53090648" version="3" timestamp="2009-09-16T05:31:31Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.67443" lon="-121.773164"/>
+  <node id="53067307" version="5" timestamp="2009-08-17T03:08:59Z" uid="147510" user="woodpeck_fixbot" changeset="2172708" lat="37.6765459" lon="-121.7598223"/>
+  <node id="53121384" version="5" timestamp="2010-06-07T02:39:00Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6804519" lon="-121.7752289">
+    <tag k="highway" v="turning_circle"/>
+  </node>
+  <node id="53047886" version="4" timestamp="2010-06-07T03:10:34Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6768106" lon="-121.7665001"/>
+  <node id="297227169" version="1" timestamp="2008-09-15T14:59:29Z" uid="28775" user="StellanL" changeset="642764" lat="37.6752299" lon="-121.7754492"/>
+  <node id="53024449" version="5" timestamp="2011-01-09T02:07:23Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799611" lon="-121.7549629"/>
+  <node id="53098283" version="4" timestamp="2009-09-16T05:34:25Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.6775309" lon="-121.7613844"/>
+  <node id="53114453" version="5" timestamp="2011-01-09T04:19:28Z" uid="201724" user="mk408" changeset="6911695" lat="37.6791086" lon="-121.7690077"/>
+  <node id="53029682" version="3" timestamp="2009-09-16T05:14:33Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.6773834" lon="-121.7681707"/>
+  <node id="53024435" version="6" timestamp="2010-02-27T20:47:06Z" uid="123633" user="stevea" changeset="3992529" lat="37.67999" lon="-121.7652039">
+    <tag k="highway" v="traffic_signals"/>
+  </node>
+  <node id="766205498" version="1" timestamp="2010-06-07T02:36:12Z" uid="28775" user="StellanL" changeset="4924418" lat="37.679839" lon="-121.7749538"/>
+  <node id="53090656" version="5" timestamp="2011-01-09T04:19:21Z" uid="201724" user="mk408" changeset="6911695" lat="37.6744307" lon="-121.7667933"/>
+  <node id="53070132" version="6" timestamp="2009-08-17T03:09:34Z" uid="147510" user="woodpeck_fixbot" changeset="2172708" lat="37.6745302" lon="-121.7738441"/>
+  <node id="53024462" version="6" timestamp="2011-01-09T02:07:09Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799374" lon="-121.7465537"/>
+  <node id="53069791" version="6" timestamp="2010-06-07T02:39:00Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6783357" lon="-121.7742585"/>
+  <node id="53069793" version="7" timestamp="2011-01-09T04:18:55Z" uid="201724" user="mk408" changeset="6911695" lat="37.6787054" lon="-121.7730247"/>
+  <node id="53084304" version="5" timestamp="2010-06-07T02:36:23Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6801623" lon="-121.770899"/>
+  <node id="53044278" version="10" timestamp="2011-01-09T04:19:18Z" uid="201724" user="mk408" changeset="6911695" lat="37.679743" lon="-121.7749049"/>
+  <node id="53114461" version="5" timestamp="2010-06-07T02:36:27Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6826045" lon="-121.7630236"/>
+  <node id="53047882" version="6" timestamp="2011-01-09T04:19:47Z" uid="201724" user="mk408" changeset="6911695" lat="37.6794839" lon="-121.7677683"/>
+  <node id="53070128" version="7" timestamp="2011-01-09T04:19:49Z" uid="201724" user="mk408" changeset="6911695" lat="37.6772579" lon="-121.7751214"/>
+  <node id="53077704" version="7" timestamp="2010-06-07T03:10:37Z" uid="28775" user="StellanL" changeset="4924418" lat="37.679542" lon="-121.764487"/>
+  <node id="416779847" version="1" timestamp="2009-06-07T04:39:19Z" uid="81024" user="wallclimber21" changeset="1443885" lat="37.6742497" lon="-121.7562689"/>
+  <node id="53075467" version="5" timestamp="2011-01-09T04:19:17Z" uid="201724" user="mk408" changeset="6911695" lat="37.6744309" lon="-121.7644486"/>
+  <node id="53024459" version="6" timestamp="2011-01-09T02:07:15Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799425" lon="-121.7483629"/>
+  <node id="53018270" version="6" timestamp="2011-01-09T04:19:17Z" uid="201724" user="mk408" changeset="6911695" lat="37.6744303" lon="-121.7701191"/>
+  <node id="53029786" version="4" timestamp="2010-02-27T20:47:06Z" uid="123633" user="stevea" changeset="3992529" lat="37.6785091" lon="-121.7644829"/>
+  <node id="53069789" version="7" timestamp="2011-01-09T04:19:28Z" uid="201724" user="mk408" changeset="6911695" lat="37.6779763" lon="-121.7754578"/>
+  <node id="53101972" version="5" timestamp="2010-06-07T02:39:02Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6779421" lon="-121.778301"/>
+  <node id="53114543" version="3" timestamp="2009-09-16T05:37:38Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.68083" lon="-121.774064"/>
+  <node id="53090666" version="5" timestamp="2011-01-09T04:19:04Z" uid="201724" user="mk408" changeset="6911695" lat="37.6744314" lon="-121.7601828"/>
+  <node id="53114451" version="5" timestamp="2011-01-09T04:19:49Z" uid="201724" user="mk408" changeset="6911695" lat="37.6779974" lon="-121.7726784"/>
+  <node id="53070127" version="8" timestamp="2011-01-09T04:19:47Z" uid="201724" user="mk408" changeset="6911695" lat="37.6786939" lon="-121.7757939"/>
+  <node id="766205500" version="2" timestamp="2011-01-09T04:19:11Z" uid="201724" user="mk408" changeset="6911695" lat="37.6794787" lon="-121.7761614">
+    <tag k="highway" v="traffic_signals"/>
+  </node>
+  <node id="766205506" version="1" timestamp="2010-06-07T02:36:12Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6787141" lon="-121.7786115"/>
+  <node id="53069799" version="6" timestamp="2010-06-07T03:10:36Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6807478" lon="-121.7663753"/>
+  <node id="53090654" version="5" timestamp="2011-01-09T04:19:42Z" uid="201724" user="mk408" changeset="6911695" lat="37.6744303" lon="-121.769948"/>
+  <node id="297227109" version="2" timestamp="2009-10-28T01:09:15Z" uid="38130" user="skydivehein" changeset="2970349" lat="37.6755764" lon="-121.7701105"/>
+  <node id="53077688" version="5" timestamp="2011-01-09T04:19:17Z" uid="201724" user="mk408" changeset="6911695" lat="37.6757323" lon="-121.7775036"/>
+  <node id="53087311" version="5" timestamp="2011-01-09T04:19:33Z" uid="201724" user="mk408" changeset="6911695" lat="37.6744316" lon="-121.7585864"/>
+  <node id="53024472" version="6" timestamp="2011-01-09T02:07:21Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799158" lon="-121.7389146"/>
+  <node id="416779790" version="1" timestamp="2009-06-07T04:36:00Z" uid="81024" user="wallclimber21" changeset="1443885" lat="37.6730405" lon="-121.7544236"/>
+  <node id="416779791" version="1" timestamp="2009-06-07T04:36:03Z" uid="81024" user="wallclimber21" changeset="1443885" lat="37.6744467" lon="-121.7572817"/>
+  <node id="53024441" version="6" timestamp="2011-01-09T02:07:00Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799817" lon="-121.7622569"/>
+  <node id="53069880" version="5" timestamp="2010-02-27T20:47:09Z" uid="123633" user="stevea" changeset="3992529" lat="37.6808139" lon="-121.7664713"/>
+  <node id="53024461" version="6" timestamp="2011-01-09T02:07:05Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799392" lon="-121.7471928"/>
+  <node id="53106791" version="4" timestamp="2010-06-07T03:10:34Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6771602" lon="-121.7652917"/>
+  <node id="53044276" version="15" timestamp="2011-01-09T04:19:31Z" uid="201724" user="mk408" changeset="6911695" lat="37.6793853" lon="-121.7761176">
+    <tag k="highway" v="traffic_signals"/>
+  </node>
+  <node id="53021399" version="5" timestamp="2011-01-09T02:07:16Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799614" lon="-121.7550629"/>
+  <node id="53070131" version="7" timestamp="2011-01-09T04:19:14Z" uid="201724" user="mk408" changeset="6911695" lat="37.6765133" lon="-121.7747727"/>
+  <node id="53127617" version="5" timestamp="2010-06-07T04:04:41Z" uid="28775" user="StellanL" changeset="4924531" lat="37.6790114" lon="-121.7615936"/>
+  <node id="1093170978" version="1" timestamp="2011-01-09T04:18:45Z" uid="201724" user="mk408" changeset="6911695" lat="37.6778245" lon="-121.7787388"/>
+  <node id="53024447" version="6" timestamp="2011-01-09T02:07:08Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799669" lon="-121.7570156"/>
+  <node id="53024475" version="5" timestamp="2011-01-09T02:07:07Z" uid="201724" user="mk408" changeset="6911342" lat="37.679909" lon="-121.7365032"/>
+  <node id="53106787" version="4" timestamp="2009-09-16T05:36:27Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.681269" lon="-121.7672094"/>
+  <node id="53112094" version="5" timestamp="2010-06-07T02:36:08Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6805313" lon="-121.7696688"/>
+  <node id="766205361" version="1" timestamp="2010-06-07T02:36:08Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6812657" lon="-121.7699909"/>
+  <node id="53114446" version="6" timestamp="2011-01-09T04:19:47Z" uid="201724" user="mk408" changeset="6911695" lat="37.676886" lon="-121.7763496"/>
+  <node id="53003860" version="5" timestamp="2011-01-09T04:19:21Z" uid="201724" user="mk408" changeset="6911695" lat="37.6744313" lon="-121.7615416"/>
+  <node id="766216956" version="2" timestamp="2011-01-09T02:07:10Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799022" lon="-121.7341028"/>
+  <node id="53024469" version="7" timestamp="2011-01-09T02:06:59Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799236" lon="-121.7416771"/>
+  <node id="53069796" version="6" timestamp="2010-06-07T02:36:23Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6794461" lon="-121.770553"/>
+  <node id="53029788" version="4" timestamp="2009-09-16T05:14:34Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.6788691" lon="-121.7634272"/>
+  <node id="53143987" version="5" timestamp="2009-09-16T05:43:40Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.675819" lon="-121.7587323"/>
+  <node id="53067299" version="5" timestamp="2010-06-07T03:10:35Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6755543" lon="-121.7630938"/>
+  <node id="53098181" version="4" timestamp="2010-06-07T03:10:34Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6765528" lon="-121.7635748"/>
+  <node id="297227095" version="1" timestamp="2008-09-15T14:58:37Z" uid="28775" user="StellanL" changeset="642764" lat="37.6752571" lon="-121.7713379"/>
+  <node id="53112088" version="9" timestamp="2011-01-09T04:19:26Z" uid="201724" user="mk408" changeset="6911695" lat="37.6783258" lon="-121.7770212"/>
+  <node id="53003092" version="5" timestamp="2011-01-09T04:19:50Z" uid="201724" user="mk408" changeset="6911695" lat="37.6744314" lon="-121.7606806"/>
+  <node id="53047876" version="5" timestamp="2010-06-07T03:10:38Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6808999" lon="-121.7684399"/>
+  <node id="53077694" version="5" timestamp="2011-01-09T04:19:29Z" uid="201724" user="mk408" changeset="6911695" lat="37.6772629" lon="-121.7723191"/>
+  <node id="297227168" version="2" timestamp="2011-01-09T04:19:40Z" uid="201724" user="mk408" changeset="6911695" lat="37.6752007" lon="-121.775558"/>
+  <node id="53146581" version="3" timestamp="2009-09-16T05:44:34Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.669535" lon="-121.748982"/>
+  <node id="53099690" version="4" timestamp="2010-02-27T20:47:07Z" uid="123633" user="stevea" changeset="3992529" lat="37.6775445" lon="-121.7640194"/>
+  <node id="53098183" version="4" timestamp="2010-06-07T03:10:34Z" uid="28775" user="StellanL" changeset="4924418" lat="37.6769132" lon="-121.762361"/>
+  <node id="53024466" version="5" timestamp="2011-01-09T02:07:19Z" uid="201724" user="mk408" changeset="6911342" lat="37.6799286" lon="-121.7434624"/>
+  <node id="53114459" version="4" timestamp="2009-09-16T05:37:37Z" uid="147510" user="woodpeck_fixbot" changeset="2498408" lat="37.681792" lon="-121.7638277"/>
+  <way id="94024142" version="1" timestamp="2011-01-09T02:06:52Z" uid="201724" user="mk408" changeset="6911342">
+    <nd ref="53044280"/>
+    <nd ref="766205498"/>
+    <nd ref="766205500"/>
+    <nd ref="766205503"/>
+    <nd ref="766205506"/>
+    <nd ref="766205508"/>
+    <nd ref="53044272"/>
+    <tag k="highway" v="secondary"/>
+    <tag k="name" v="First Street"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="1st"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="6372100" version="7" timestamp="2011-01-09T04:19:13Z" uid="201724" user="mk408" changeset="6911695">
+    <nd ref="53114543"/>
+    <nd ref="1093170945"/>
+    <nd ref="53112092"/>
+    <nd ref="53069793"/>
+    <nd ref="53114451"/>
+    <nd ref="53077694"/>
+    <nd ref="53029679"/>
+    <nd ref="297227095"/>
+    <nd ref="53090651"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="South N Street"/>
+    <tag k="tiger:cfcc" v="A41"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="N"/>
+    <tag k="tiger:name_direction_prefix" v="S"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:reviewed" v="no"/>
+    <tag k="tiger:separated" v="no"/>
+    <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+    <tag k="tiger:tlid" v="125035511:125035570:125035583:125035587:125035591:125035593:125035641"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="6372029" version="11" timestamp="2011-01-09T04:19:40Z" uid="201724" user="mk408" changeset="6911695">
+    <nd ref="53103348"/>
+    <nd ref="1093170875"/>
+    <nd ref="1093171046"/>
+    <nd ref="1093171031"/>
+    <nd ref="53042889"/>
+    <nd ref="1093170983"/>
+    <nd ref="53114446"/>
+    <nd ref="53070128"/>
+    <nd ref="53114449"/>
+    <nd ref="53114451"/>
+    <nd ref="53018267"/>
+    <nd ref="53084305"/>
+    <nd ref="53114453"/>
+    <nd ref="53047882"/>
+    <nd ref="53106788"/>
+    <nd ref="53114456"/>
+    <tag k="highway" v="secondary"/>
+    <tag k="name" v="4th Street"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="4th"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="6328762" version="25" timestamp="2011-01-09T04:19:48Z" uid="201724" user="mk408" changeset="6911695">
+    <nd ref="53024435"/>
+    <nd ref="53024437"/>
+    <nd ref="53024441"/>
+    <nd ref="53024443"/>
+    <nd ref="53024445"/>
+    <nd ref="53024447"/>
+    <nd ref="53021399"/>
+    <nd ref="53024449"/>
+    <nd ref="53024454"/>
+    <nd ref="53024459"/>
+    <nd ref="53024461"/>
+    <nd ref="53024462"/>
+    <nd ref="53024465"/>
+    <nd ref="53024466"/>
+    <nd ref="53024467"/>
+    <nd ref="53024469"/>
+    <nd ref="53024470"/>
+    <nd ref="53024471"/>
+    <nd ref="53024472"/>
+    <nd ref="53024473"/>
+    <nd ref="53024475"/>
+    <nd ref="53024478"/>
+    <nd ref="766216956"/>
+    <nd ref="53024479"/>
+    <tag k="cycleway" v="lane"/>
+    <tag k="highway" v="primary"/>
+    <tag k="name" v="East Avenue"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="East"/>
+    <tag k="tiger:name_type" v="Ave"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="94024179" version="2" timestamp="2011-01-09T04:19:24Z" uid="201724" user="mk408" changeset="6911695">
+    <nd ref="53044283"/>
+    <nd ref="53018264"/>
+    <nd ref="1093170945"/>
+    <nd ref="53044280"/>
+    <tag k="highway" v="secondary"/>
+    <tag k="name" v="First Street"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="1st"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="6398257" version="17" timestamp="2011-08-09T14:07:41Z" uid="207745" user="NE2" changeset="8967545">
+    <nd ref="53022482"/>
+    <nd ref="53044287"/>
+    <nd ref="53146562"/>
+    <nd ref="53112083"/>
+    <nd ref="53106787"/>
+    <nd ref="53069880"/>
+    <nd ref="53069799"/>
+    <nd ref="53114456"/>
+    <nd ref="53024435"/>
+    <nd ref="53077704"/>
+    <nd ref="53029788"/>
+    <nd ref="53131036"/>
+    <nd ref="53098283"/>
+    <nd ref="53098184"/>
+    <nd ref="53067307"/>
+    <nd ref="53126388"/>
+    <nd ref="53143987"/>
+    <nd ref="53090670"/>
+    <nd ref="416779847"/>
+    <nd ref="416779790"/>
+    <nd ref="53146575"/>
+    <nd ref="53040018"/>
+    <nd ref="433970526"/>
+    <nd ref="1094827767"/>
+    <nd ref="53146581"/>
+    <nd ref="53146582"/>
+    <tag k="highway" v="secondary"/>
+    <tag k="name" v="South Livermore Avenue"/>
+    <tag k="ref" v="J2"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="Livermore"/>
+    <tag k="tiger:name_direction_prefix" v="S"/>
+    <tag k="tiger:name_type" v="Ave"/>
+    <tag k="tiger:zip_left" v="94550"/>
+  </way>
+  <way id="6387921" version="4" timestamp="2010-06-07T02:36:08Z" uid="28775" user="StellanL" changeset="4924418">
+    <nd ref="766205361"/>
+    <nd ref="53044285"/>
+    <nd ref="53112094"/>
+    <nd ref="53069797"/>
+    <nd ref="53114453"/>
+    <nd ref="53077699"/>
+    <nd ref="53029682"/>
+    <nd ref="53131032"/>
+    <nd ref="53098176"/>
+    <nd ref="53090656"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="South K Street"/>
+    <tag k="tiger:cfcc" v="A41"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="K"/>
+    <tag k="tiger:name_direction_prefix" v="S"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:reviewed" v="no"/>
+    <tag k="tiger:separated" v="no"/>
+    <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+    <tag k="tiger:tlid" v="125035892:125035632:125035634:125035661:125035602:125035604:125035622:125035624"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="6359549" version="2" timestamp="2010-03-27T10:00:11Z" uid="20587" user="balrog-kun" changeset="4244079">
+    <nd ref="53024435"/>
+    <nd ref="53077702"/>
+    <nd ref="53029786"/>
+    <nd ref="53099690"/>
+    <nd ref="53098181"/>
+    <nd ref="53067299"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="South H Street"/>
+    <tag k="tiger:cfcc" v="A41"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="H"/>
+    <tag k="tiger:name_direction_prefix" v="S"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:reviewed" v="no"/>
+    <tag k="tiger:separated" v="no"/>
+    <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+    <tag k="tiger:tlid" v="125035915:125035838:125035854:125035858:125035880"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="94053703" version="2" timestamp="2011-06-11T05:21:12Z" uid="468676" user="Alexandre Orlov" changeset="8402691">
+    <nd ref="53042893"/>
+    <nd ref="53077688"/>
+    <nd ref="1319725160"/>
+    <nd ref="53029673"/>
+    <nd ref="53070132"/>
+    <nd ref="53090648"/>
+    <nd ref="53090649"/>
+    <nd ref="53090651"/>
+    <nd ref="53067402"/>
+    <nd ref="53018270"/>
+    <nd ref="53090654"/>
+    <nd ref="53084311"/>
+    <nd ref="53090656"/>
+    <nd ref="53090658"/>
+    <nd ref="53047892"/>
+    <nd ref="53075467"/>
+    <nd ref="53090661"/>
+    <nd ref="53090662"/>
+    <nd ref="53003860"/>
+    <nd ref="53003849"/>
+    <nd ref="53003092"/>
+    <nd ref="53090666"/>
+    <nd ref="53087296"/>
+    <nd ref="53087311"/>
+    <nd ref="53090668"/>
+    <nd ref="416779848"/>
+    <nd ref="416779791"/>
+    <nd ref="416779792"/>
+    <nd ref="53090670"/>
+    <tag k="highway" v="tertiary"/>
+    <tag k="name" v="College Avenue"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="College"/>
+    <tag k="tiger:name_type" v="Ave"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="94053692" version="1" timestamp="2011-01-09T04:18:52Z" uid="201724" user="mk408" changeset="6911695">
+    <nd ref="53114456"/>
+    <nd ref="53114457"/>
+    <nd ref="53114459"/>
+    <nd ref="53114461"/>
+    <nd ref="53114463"/>
+    <nd ref="53030121"/>
+    <nd ref="297226662"/>
+    <nd ref="53065590"/>
+    <tag k="highway" v="tertiary"/>
+    <tag k="name" v="4th Street"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="4th"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="6334901" version="27" timestamp="2011-01-09T04:18:58Z" uid="201724" user="mk408" changeset="6911695">
+    <nd ref="1093170890"/>
+    <nd ref="1093170979"/>
+    <nd ref="196889651"/>
+    <nd ref="53044273"/>
+    <nd ref="53044276"/>
+    <nd ref="53044278"/>
+    <nd ref="53044280"/>
+    <tag k="highway" v="secondary"/>
+    <tag k="name" v="First Street"/>
+    <tag k="oneway" v="yes"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="1st"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="6330300" version="6" timestamp="2011-01-09T04:19:16Z" uid="201724" user="mk408" changeset="6911695">
+    <nd ref="297227168"/>
+    <nd ref="297227169"/>
+    <nd ref="53029674"/>
+    <nd ref="53029677"/>
+    <nd ref="53029679"/>
+    <nd ref="53018269"/>
+    <nd ref="53029681"/>
+    <nd ref="53029682"/>
+    <nd ref="53029683"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="6th Street"/>
+    <tag k="tiger:cfcc" v="A41"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="6th"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:reviewed" v="no"/>
+    <tag k="tiger:separated" v="no"/>
+    <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+    <tag k="tiger:tlid" v="125035633:125035848:125035635:125035640:125035642:125035563:125035627"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="6330318" version="3" timestamp="2010-03-27T09:39:25Z" uid="20587" user="balrog-kun" changeset="4244079">
+    <nd ref="53029785"/>
+    <nd ref="53029786"/>
+    <nd ref="416779911"/>
+    <nd ref="53029788"/>
+    <nd ref="53029790"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="6th Street"/>
+    <tag k="tiger:cfcc" v="A41"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="6th"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:reviewed" v="no"/>
+    <tag k="tiger:separated" v="no"/>
+    <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+    <tag k="tiger:tlid" v="125035857:125035875:125035877"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="6327249" version="7" timestamp="2011-01-09T02:07:19Z" uid="201724" user="mk408" changeset="6911342">
+    <nd ref="53018262"/>
+    <nd ref="53018264"/>
+    <nd ref="53018265"/>
+    <nd ref="53018266"/>
+    <nd ref="53018267"/>
+    <nd ref="53018268"/>
+    <nd ref="53018269"/>
+    <nd ref="297227109"/>
+    <nd ref="53018270"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="South M Street"/>
+    <tag k="tiger:cfcc" v="A41"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="M"/>
+    <tag k="tiger:name_direction_prefix" v="S"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:reviewed" v="no"/>
+    <tag k="tiger:separated" v="no"/>
+    <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+    <tag k="tiger:tlid" v="125035595:125035597:125035599:125035643:125035571:125035573:125035585"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="6402173" version="10" timestamp="2011-01-09T04:19:04Z" uid="201724" user="mk408" changeset="6911695">
+    <nd ref="766205503"/>
+    <nd ref="53044273"/>
+    <nd ref="53112088"/>
+    <nd ref="53069787"/>
+    <nd ref="53114446"/>
+    <nd ref="53077689"/>
+    <nd ref="297227168"/>
+    <nd ref="53029673"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="South Q Street"/>
+    <tag k="tiger:cfcc" v="A41"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="Q"/>
+    <tag k="tiger:name_direction_prefix" v="S"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:reviewed" v="no"/>
+    <tag k="tiger:separated" v="no"/>
+    <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+    <tag k="tiger:tlid" v="125035500:125035504:125035517:125035519:125035559"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="6335980" version="5" timestamp="2011-01-09T02:07:14Z" uid="201724" user="mk408" changeset="6911342">
+    <nd ref="53044286"/>
+    <nd ref="53047876"/>
+    <nd ref="53047878"/>
+    <nd ref="53047882"/>
+    <nd ref="53047883"/>
+    <nd ref="53029683"/>
+    <nd ref="53047886"/>
+    <nd ref="53047888"/>
+    <nd ref="53047890"/>
+    <nd ref="53047892"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="South J Street"/>
+    <tag k="tiger:cfcc" v="A41"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="J"/>
+    <tag k="tiger:name_direction_prefix" v="S"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:reviewed" v="no"/>
+    <tag k="tiger:separated" v="no"/>
+    <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+    <tag k="tiger:tlid" v="125035894:125035630:125035843:125035849:125035852:125035903:125035606:125035613:125035616"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="6365218" version="4" timestamp="2010-06-07T03:10:37Z" uid="28775" user="StellanL" changeset="4924418">
+    <nd ref="53106787"/>
+    <nd ref="53069798"/>
+    <nd ref="53106788"/>
+    <nd ref="53077701"/>
+    <nd ref="53029785"/>
+    <nd ref="53106791"/>
+    <nd ref="53098179"/>
+    <nd ref="53067298"/>
+    <nd ref="53090661"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="South I Street"/>
+    <tag k="tiger:cfcc" v="A41"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="I"/>
+    <tag k="tiger:name_direction_prefix" v="S"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:reviewed" v="no"/>
+    <tag k="tiger:separated" v="no"/>
+    <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+    <tag k="tiger:tlid" v="125035900:125035902:125035826:125035829:125035845:125035847:125035850:125035860"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="6377479" version="4" timestamp="2010-06-07T02:39:01Z" uid="28775" user="StellanL" changeset="4924418">
+    <nd ref="53121384"/>
+    <nd ref="766205498"/>
+    <nd ref="53044278"/>
+    <nd ref="53112091"/>
+    <nd ref="53069791"/>
+    <nd ref="53114449"/>
+    <nd ref="53077692"/>
+    <nd ref="53029677"/>
+    <nd ref="297227137"/>
+    <nd ref="53090649"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="South O Street"/>
+    <tag k="tiger:cfcc" v="A41"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="O"/>
+    <tag k="tiger:name_direction_prefix" v="S"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:reviewed" v="no"/>
+    <tag k="tiger:separated" v="no"/>
+    <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+    <tag k="tiger:tlid" v="125035636:125035505:125035523:125035525:125035527:125035531:125035589"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="6348051" version="7" timestamp="2011-01-09T02:07:23Z" uid="201724" user="mk408" changeset="6911342">
+    <nd ref="53138793"/>
+    <nd ref="53044283"/>
+    <nd ref="53084304"/>
+    <nd ref="53069796"/>
+    <nd ref="53084305"/>
+    <nd ref="53077697"/>
+    <nd ref="53029681"/>
+    <nd ref="53084307"/>
+    <nd ref="53084309"/>
+    <nd ref="53084311"/>
+    <nd ref="53084312"/>
+    <tag k="highway" v="tertiary"/>
+    <tag k="name" v="South L Street"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="L"/>
+    <tag k="tiger:name_direction_prefix" v="S"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="94053697" version="1" timestamp="2011-01-09T04:18:53Z" uid="201724" user="mk408" changeset="6911695">
+    <nd ref="1093170978"/>
+    <nd ref="53101972"/>
+    <nd ref="53112088"/>
+    <nd ref="53070127"/>
+    <nd ref="53112091"/>
+    <nd ref="53112092"/>
+    <nd ref="53018265"/>
+    <nd ref="53084304"/>
+    <nd ref="53112094"/>
+    <nd ref="53047876"/>
+    <nd ref="53106787"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="Second Street"/>
+    <tag k="tiger:cfcc" v="A41"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="2nd"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:separated" v="no"/>
+    <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+    <tag k="tiger:tlid" v="125035824:125035603:125035612:125035580:125035501:125035503:125035514:125035524:125035582:125035584"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="6346329" version="5" timestamp="2010-03-27T09:53:28Z" uid="20587" user="balrog-kun" changeset="4244079">
+    <nd ref="53077688"/>
+    <nd ref="53077689"/>
+    <nd ref="53070131"/>
+    <nd ref="53077692"/>
+    <nd ref="53077694"/>
+    <nd ref="53018268"/>
+    <nd ref="53077697"/>
+    <nd ref="53077699"/>
+    <nd ref="53047883"/>
+    <nd ref="53077701"/>
+    <nd ref="53077702"/>
+    <nd ref="53077704"/>
+    <nd ref="53024437"/>
+    <tag k="created_by" v="Potlatch 0.10b"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="5th Street"/>
+    <tag k="tiger:cfcc" v="A41"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="5th"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:reviewed" v="no"/>
+    <tag k="tiger:separated" v="no"/>
+    <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+    <tag k="tiger:tlid" v="125035631:125035842:125035853:125035855:125035866:125035592:125035598:125035625:125035558:125035561:125035588"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="94053694" version="1" timestamp="2011-01-09T04:18:52Z" uid="201724" user="mk408" changeset="6911695">
+    <nd ref="766205500"/>
+    <nd ref="53044276"/>
+    <nd ref="53070127"/>
+    <nd ref="53069789"/>
+    <nd ref="53070128"/>
+    <nd ref="53070131"/>
+    <nd ref="53029674"/>
+    <nd ref="53070132"/>
+    <tag k="highway" v="tertiary"/>
+    <tag k="name" v="South P Street"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="P"/>
+    <tag k="tiger:name_direction_prefix" v="S"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="6385822" version="4" timestamp="2010-06-07T03:10:34Z" uid="28775" user="StellanL" changeset="4924418">
+    <nd ref="53084307"/>
+    <nd ref="53131032"/>
+    <nd ref="53047886"/>
+    <nd ref="53106791"/>
+    <nd ref="53099690"/>
+    <nd ref="53131035"/>
+    <nd ref="416779912"/>
+    <nd ref="53131036"/>
+    <nd ref="53127617"/>
+    <nd ref="53024445"/>
+    <tag k="cycleway" v="lane"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="7th Street"/>
+    <tag k="tiger:cfcc" v="A41"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="7th"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:reviewed" v="no"/>
+    <tag k="tiger:separated" v="no"/>
+    <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+    <tag k="tiger:tlid" v="125066828:125066829:125035660:125035851:125035859:125035879:125035881:125035885:125035937"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="6344414" version="5" timestamp="2010-06-07T03:10:37Z" uid="28775" user="StellanL" changeset="4924418">
+    <nd ref="53069786"/>
+    <nd ref="53069787"/>
+    <nd ref="53069789"/>
+    <nd ref="53069791"/>
+    <nd ref="53069793"/>
+    <nd ref="53018266"/>
+    <nd ref="53069796"/>
+    <nd ref="53069797"/>
+    <nd ref="53047878"/>
+    <nd ref="53069798"/>
+    <nd ref="766216985"/>
+    <nd ref="53069799"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="3rd Street"/>
+    <tag k="tiger:cfcc" v="A41"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="3rd"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:reviewed" v="no"/>
+    <tag k="tiger:separated" v="no"/>
+    <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+    <tag k="tiger:tlid" v="125035828:125035830:125035615:125035594:125035617:125035621:125035516:125035520:125035526:125035586"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+  <way id="6358286" version="2" timestamp="2010-03-27T09:59:30Z" uid="20587" user="balrog-kun" changeset="4244079">
+    <nd ref="53098176"/>
+    <nd ref="53047888"/>
+    <nd ref="53098179"/>
+    <nd ref="53098181"/>
+    <nd ref="53098183"/>
+    <nd ref="53098184"/>
+    <tag k="highway" v="residential"/>
+    <tag k="name" v="8th Street"/>
+    <tag k="tiger:cfcc" v="A41"/>
+    <tag k="tiger:county" v="Alameda, CA"/>
+    <tag k="tiger:name_base" v="8th"/>
+    <tag k="tiger:name_type" v="St"/>
+    <tag k="tiger:reviewed" v="no"/>
+    <tag k="tiger:separated" v="no"/>
+    <tag k="tiger:source" v="tiger_import_dch_v0.6_20070809"/>
+    <tag k="tiger:tlid" v="125035890:125035893:125035899:125035914:125035887"/>
+    <tag k="tiger:zip_left" v="94550"/>
+    <tag k="tiger:zip_right" v="94550"/>
+  </way>
+</osm>
