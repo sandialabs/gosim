@@ -4,8 +4,8 @@ import (
 	"strconv"
 	"fmt"
 	"os"
-	"encoding/xml"
-	"math/rand"
+	"xml"
+	"rand"
 	"time"
 	"math"
 	"./osm"
@@ -45,6 +45,7 @@ type Tag struct {
 }
 
 type Person struct {
+	Index	int		/* Which person is this? starts at 0 */
 	Current	osm.Node	/* Our current location */
 	Speed	float64	/* speed in m/s */
 	LatSpeed	float64	/* degrees latitude per second */
@@ -61,13 +62,13 @@ type Person struct {
 func ParseOSM(filename string) (nodes map[uint]osm.Node, ways []osm.Way) {
 	file, err := os.Open(filename)
 	if err != nil {
-		fmt.Println(err.Error())
+		fmt.Println(err.String())
 	}
 
 	m := new(Osm)
 	err = xml.Unmarshal(file, m)
 	if err != nil {
-		fmt.Println(err.Error())
+		fmt.Println(err.String())
 	}
 
 	nodes = make(map[uint]osm.Node)	
@@ -109,6 +110,16 @@ func main() {
 
 	rand.Seed(time.Nanoseconds() % 1e9)
 
+	done := make([]chan int, 1, 1)
+	for i := 0; i < 1; i++ {
+		done = append(done, make(chan int))
+
+		go Wander(i, nodes, ways, done[i])
+	}
+	<-done[0]
+}
+
+func Wander(num int, nodes map[uint]osm.Node, ways []osm.Way, done chan int) {
 	// Pick a random way
 	whichway := uint(rand.Intn(len(ways)))
 	w := ways[whichway]
@@ -117,27 +128,28 @@ func main() {
 	tmp := uint(rand.Intn(len(w.Nodes)))
 	curr := w.Nodes[tmp]
 
-	fmt.Printf("selected way #%d out of %d, which is %v\n", whichway, len(ways), w.Name)
+	fmt.Printf("#%d: selected way #%d out of %d, which is %v\n", num, whichway, len(ways), w.Name)
 
-	fmt.Printf("Standing on node #%d. This node connects to ways:\n", curr)
+	fmt.Printf("#%d: Standing on node #%d.\n", num, curr)
 
 	dude := new(Person)
 	dude.OriginId = curr
 	dude.Speed = 1.0
+	dude.Index = num
 
 	for {
 		/* This will end up being the main navigation loop, I think */
 		// Figure out what ways go through this node
 		intersect := osm.FindWays(ways, curr)
-		for _, w = range intersect {
-			fmt.Printf("* %s\n", w.Name)
-		}
+//		for _, w = range intersect {
+//			fmt.Printf("* %s\n", w.Name)
+//		}
 
 		// Pick one of these ways at random
 		whichway = uint(rand.Intn(len(intersect)))
 		dude.Way = intersect[whichway]
 
-		fmt.Printf("We're taking %v\n", dude.Way.Name)
+		fmt.Printf("#%d: taking %v\n", dude.Index, dude.Way.Name)
 
 		// Look through the list of nodes until we find the correct index
 		var startidx uint
@@ -148,7 +160,7 @@ func main() {
 			}
 		}
 
-		fmt.Printf("ok, our starting index in this way is %d, which points to node #%d\n", startidx, dude.Way.Nodes[startidx])
+		fmt.Printf("#%d: our starting index in this way is %d, which points to node #%d\n", dude.Index, startidx, dude.Way.Nodes[startidx])
 
 		// Set the current node
 		dude.OriginId = dude.Way.Nodes[startidx]
@@ -161,7 +173,7 @@ func main() {
 		dude.DestinationId = dude.Way.Nodes[destidx]
 
 		// How far away is that node?
-		fmt.Printf("We have selected node #%d, which is %v meters away\n", dude.DestinationId, osm.GetDist(nodes[dude.OriginId], nodes[dude.DestinationId]))
+		fmt.Printf("#%d: selected node #%d, which is %v meters away\n", dude.Index, dude.DestinationId, osm.GetDist(nodes[dude.OriginId], nodes[dude.DestinationId]))
 
 		// Move to that node!
 		nextidx := startidx
@@ -181,10 +193,10 @@ func main() {
 			dude.UpdateLatLonSpeed(nodes[dude.OriginId], nodes[dude.WaypointId])
 			dude.Current = *osm.NewNode(0, nodes[dude.OriginId].Lat, nodes[dude.OriginId].Lon)
 
-			fmt.Printf("Waypoint is %v meters away from our current node\n", osm.GetDist(dude.Current, nodes[dude.WaypointId]))
+			fmt.Printf("#%d: Waypoint is %v meters away from our current node\n", dude.Index, osm.GetDist(dude.Current, nodes[dude.WaypointId]))
 
 			for ; osm.GetDist(dude.Current, nodes[dude.WaypointId]) > dude.Speed; {
-				fmt.Printf("location = %v by %v, This is %v meters from the waypoint\n", dude.Current.Lat, dude.Current.Lon, osm.GetDist(dude.Current, nodes[dude.WaypointId]))
+				fmt.Printf("#%d: location = %v by %v, This is %v meters from the waypoint\n", dude.Index, dude.Current.Lat, dude.Current.Lon, osm.GetDist(dude.Current, nodes[dude.WaypointId]))
 				dude.Current = *osm.NewNode(0, dude.Current.Lat + dude.LatSpeed, dude.Current.Lon + dude.LonSpeed)
 				time.Sleep(500000000)
 			}
@@ -192,7 +204,7 @@ func main() {
 			startidx = nextidx
 			dude.OriginId = dude.Way.Nodes[startidx]
 
-			fmt.Printf("Next waypoint set to #%d, which is %v meters from the destination\n\n", dude.Way.Nodes[nextidx], osm.GetDist(nodes[dude.WaypointId], nodes[dude.DestinationId]))
+			fmt.Printf("#%d: Next waypoint set to #%d, which is %v meters from the destination\n\n", dude.Index, dude.Way.Nodes[nextidx], osm.GetDist(nodes[dude.WaypointId], nodes[dude.DestinationId]))
 			//next := w.Nodes[nextidx]
 			//for {
 			//	if math.Fabs(nodes[next].Lat - nodes[curr].Lat) < 0.00001 && math.Fabs(nodes[next].Lon - nodes[curr].Lon
@@ -200,25 +212,23 @@ func main() {
 		fmt.Printf("\n**************\n")
 		time.Sleep(5000000000)
 	}
-	
-		
 }
 
 func (p *Person) UpdateLatLonSpeed(n1, n2 osm.Node) {
 	const R float64 = 6371000
 	x := ((math.Pi/180)*(n2.Lon - n1.Lon))*math.Cos((math.Pi/180)*n1.Lat)*R
 	y := (math.Pi/180)*(n2.Lat - n1.Lat)*R
-	d := math.Sqrt(x*x + y*y)
+//	d := math.Sqrt(x*x + y*y)
 
 	theta := math.Atan2(y, x)
 
 	vx := p.Speed*math.Cos(theta)
 	vy := p.Speed*math.Sin(theta)
 
-	fmt.Printf("x = %v, y = %v, d = %v, theta = %v, vx = %v, vy = %v", x, y, d, theta, vx, vy)
+//	fmt.Printf("x = %v, y = %v, d = %v, theta = %v, vx = %v, vy = %v", x, y, d, theta, vx, vy)
 
 	p.LatSpeed = (vy / R)*(180/math.Pi)
 	p.LonSpeed = (vx / (R * math.Cos((math.Pi/180)*n1.Lat)))*(180/math.Pi)
-	fmt.Printf("latspeed = %v, lonspeed = %v\n", p.LatSpeed, p.LonSpeed)
+//	fmt.Printf("latspeed = %v, lonspeed = %v\n", p.LatSpeed, p.LonSpeed)
 
 }
