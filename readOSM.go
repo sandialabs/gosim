@@ -4,8 +4,8 @@ import (
 	"strconv"
 	"fmt"
 	"os"
-	"xml"
-	"rand"
+	"encoding/xml"
+	"math/rand"
 	"time"
 	"math"
 	"./osm"
@@ -13,36 +13,35 @@ import (
 
 /* An OpenStreetMaps map */
 type Osm struct {
-//	Id	string	`xml:"attr"`
-	Version	string	"attr"
+	Version	string	`xml:"attr"`
 	Node	[]Node
 	Way	[]Way
 }
 
 type Node struct {
-	XMLName	xml.Name	"node"
-	Id	string		"attr"
-	Lat	string		"attr"
-	Lon	string		"attr"
+	XMLName	xml.Name	`xml:"node"`
+	Id	string		`xml:"attr"`
+	Lat	string		`xml:"attr"`
+	Lon	string		`xml:"attr"`
 }
 
 type Way struct {
-	XMLName	xml.Name	"way"
-	Id	string		"attr"
+	XMLName	xml.Name	`xml:"way"`
+	Id	string		`xml:"attr"`
 	Nd	[]Nd
 	Tag	[]Tag
 }
 
 /* refers to one node in a way */
 type Nd struct {
-	XMLName	xml.Name	"nd"
-	Ref	string		"attr"
+	XMLName	xml.Name	`xml:"nd"`
+	Ref	string		`xml:"attr"`
 }
 
 type Tag struct {
-	XMLName	xml.Name	"tag"
-	K	string		"attr" /* Key */
-	V	string		"attr" /* Value */
+	XMLName	xml.Name	`xml:"tag"`
+	K	string		`xml:"attr"` /* Key */
+	V	string		`xml:"attr"` /* Value */
 }
 
 type Person struct {
@@ -62,18 +61,19 @@ type Person struct {
 func ParseOSM(filename string) (nodes map[uint]osm.Node, ways []osm.Way) {
 	file, err := os.Open(filename)
 	if err != nil {
-		fmt.Println(err.String())
+		fmt.Println(err.Error())
 	}
 
 	m := new(Osm)
 	err = xml.Unmarshal(file, m)
 	if err != nil {
-		fmt.Println(err.String())
+		fmt.Println(err.Error())
 	}
 
 	nodes = make(map[uint]osm.Node)	
 	for _, n := range m.Node {
 		id, _ := strconv.Atoui(n.Id)
+		fmt.Printf("found a node with id %s (%d)\n", n.Id, id)
 		lat, _ := strconv.Atof64(n.Lat)
 		lon, _ := strconv.Atof64(n.Lon)
 		t := osm.NewNode(id, lat, lon)
@@ -90,6 +90,7 @@ func ParseOSM(filename string) (nodes map[uint]osm.Node, ways []osm.Way) {
 		for _, tag := range w.Tag {
 			if tag.K == "name" {
 				wtmp.Name = tag.V
+				fmt.Printf("name = %s\n", wtmp.Name)
 			}
 			if tag.K == "highway" {
 				wtmp.Type = tag.V
