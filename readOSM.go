@@ -9,6 +9,8 @@ import (
 	"time"
 	"math"
 	"./osm"
+	"launchpad.net/mgo"
+	"launchpad.net/gobson/bson"
 )
 
 /* An OpenStreetMaps map */
@@ -50,13 +52,16 @@ type Person struct {
 	Speed	float64	/* speed in m/s */
 	LatSpeed	float64	/* degrees latitude per second */
 	LonSpeed float64	/* degrees longitude per second */
-//	Origin	osm.Node	/* The node this person has started from */
-//	Waypoint	osm.Node	/* The current waypoint on the way to the destination */
-//	Destination	osm.Node	/* The node this person is heading toward */
 	OriginId	uint		/* The ID of the origin in the list of nodes */
 	WaypointId	uint	/* ID for the waypoint */
 	DestinationId	uint	/* ID of the destination */
 	Way		osm.Way	/* The way we're standing on right now */
+}
+
+type DBPerson struct {
+	Index	int
+	Lat		float64
+	Lon		float64
 }
 
 func ParseOSM(filename string) (nodes map[uint]osm.Node, ways []osm.Way) {
@@ -110,16 +115,23 @@ func main() {
 
 	rand.Seed(time.Nanoseconds() % 1e9)
 
-	done := make([]chan int, 1, 1)
-	for i := 0; i < 1; i++ {
+	session, err := mgo.Mongo("localhost")
+	if err != nil { panic(err) } 
+
+//	defer session.Close()
+
+	done := make([]chan int, 1, 100)
+	for i := 0; i < 100; i++ {
 		done = append(done, make(chan int))
 
-		go Wander(i, nodes, ways, done[i])
+		go Wander(session, i, nodes, ways, done[i])
 	}
 	<-done[0]
 }
 
-func Wander(num int, nodes map[uint]osm.Node, ways []osm.Way, done chan int) {
+func Wander(session *mgo.Session, num int, nodes map[uint]osm.Node, ways []osm.Way, done chan int) {
+	c := session.DB("test").C("people")
+
 	// Pick a random way
 	whichway := uint(rand.Intn(len(ways)))
 	w := ways[whichway]
@@ -193,21 +205,23 @@ func Wander(num int, nodes map[uint]osm.Node, ways []osm.Way, done chan int) {
 			dude.UpdateLatLonSpeed(nodes[dude.OriginId], nodes[dude.WaypointId])
 			dude.Current = *osm.NewNode(0, nodes[dude.OriginId].Lat, nodes[dude.OriginId].Lon)
 
+			_, err := c.Upsert(bson.M{"index": dude.Index}, &DBPerson{dude.Index, dude.Current.Lat, dude.Current.Lon}) 
+			if err != nil { panic(err) }
+
 			fmt.Printf("#%d: Waypoint is %v meters away from our current node\n", dude.Index, osm.GetDist(dude.Current, nodes[dude.WaypointId]))
 
 			for ; osm.GetDist(dude.Current, nodes[dude.WaypointId]) > dude.Speed; {
 				fmt.Printf("#%d: location = %v by %v, This is %v meters from the waypoint\n", dude.Index, dude.Current.Lat, dude.Current.Lon, osm.GetDist(dude.Current, nodes[dude.WaypointId]))
 				dude.Current = *osm.NewNode(0, dude.Current.Lat + dude.LatSpeed, dude.Current.Lon + dude.LonSpeed)
-				time.Sleep(500000000)
+				_, err := c.Upsert(bson.M{"index": dude.Index}, &DBPerson{dude.Index, dude.Current.Lat, dude.Current.Lon}) 
+				if err != nil { panic(err) }
+				time.Sleep(1000000000)
 			}
 
 			startidx = nextidx
 			dude.OriginId = dude.Way.Nodes[startidx]
 
 			fmt.Printf("#%d: Next waypoint set to #%d, which is %v meters from the destination\n\n", dude.Index, dude.Way.Nodes[nextidx], osm.GetDist(nodes[dude.WaypointId], nodes[dude.DestinationId]))
-			//next := w.Nodes[nextidx]
-			//for {
-			//	if math.Fabs(nodes[next].Lat - nodes[curr].Lat) < 0.00001 && math.Fabs(nodes[next].Lon - nodes[curr].Lon
 		}
 		fmt.Printf("\n**************\n")
 		time.Sleep(5000000000)
@@ -218,17 +232,12 @@ func (p *Person) UpdateLatLonSpeed(n1, n2 osm.Node) {
 	const R float64 = 6371000
 	x := ((math.Pi/180)*(n2.Lon - n1.Lon))*math.Cos((math.Pi/180)*n1.Lat)*R
 	y := (math.Pi/180)*(n2.Lat - n1.Lat)*R
-//	d := math.Sqrt(x*x + y*y)
 
 	theta := math.Atan2(y, x)
 
 	vx := p.Speed*math.Cos(theta)
 	vy := p.Speed*math.Sin(theta)
 
-//	fmt.Printf("x = %v, y = %v, d = %v, theta = %v, vx = %v, vy = %v", x, y, d, theta, vx, vy)
-
 	p.LatSpeed = (vy / R)*(180/math.Pi)
 	p.LonSpeed = (vx / (R * math.Cos((math.Pi/180)*n1.Lat)))*(180/math.Pi)
-//	fmt.Printf("latspeed = %v, lonspeed = %v\n", p.LatSpeed, p.LonSpeed)
-
 }
