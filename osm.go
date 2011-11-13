@@ -4,12 +4,15 @@ import (
 	"math"
 )
 
+type Osm struct {
+	Nodes	map[uint]Node
+	Ways	[]Way
+}
+
 type Node struct {
 	Id	uint
 	Lat	float64 // Lat and Lon are stored in degrees
 	Lon	float64
-	LatRad	float64 // Radians
-	LonRad	float64
 }
 
 type Way struct {
@@ -19,6 +22,7 @@ type Way struct {
 	Type	string // secondary, residential, etc.
 }
 
+// Given an ID#, latitude, and longitude, create a new Node instance.
 func NewNode(id uint, lat, lon float64) (n *Node) {
 	n = new(Node)
 	n.Id = id
@@ -28,6 +32,9 @@ func NewNode(id uint, lat, lon float64) (n *Node) {
 	return n
 }
 
+// Find all the ways which contain a given node ID.
+// Almost every node should be contained in at least one Way
+// Many are in 2 or 3 ways, very few are in more!
 func FindWays(ways []Way, node uint) (ret []Way) {
 	for _, w := range ways {
 		for _, id := range w.Nodes {
