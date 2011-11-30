@@ -224,7 +224,8 @@ func Wander(session *mgo.Session, num int, streets osm.Osm, done chan int) {
 
 			for ; osm.GetDist(p.Current, streets.Nodes[p.WaypointId]) > p.Speed; {
 				fmt.Printf("#%d: location = %v by %v, This is %v meters from the waypoint\n", p.Index, p.Current.Lat, p.Current.Lon, osm.GetDist(p.Current, streets.Nodes[p.WaypointId]))
-				p.Current = *osm.NewNode(0, p.Current.Lat + p.LatSpeed, p.Current.Lon + p.LonSpeed)
+				p.Current.Lat = p.Current.Lat + p.LatSpeed
+				p.Current.Lon = p.Current.Lon + p.LonSpeed
 				_, err := c.Upsert(bson.M{"index": p.Index}, &DBPerson{p.Index, p.Current.Lat, p.Current.Lon}) 
 				if err != nil { panic(err) }
 				time.Sleep(1000000000)
