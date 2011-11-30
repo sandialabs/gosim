@@ -130,9 +130,9 @@ func main() {
 	if err != nil { panic(err) } 
 
 	defer session.Close()
-
-	done := make([]chan int, 1, 1000)
-	for i := 0; i < 1000; i++ {
+    num_people := 50
+	done := make([]chan int, 1, num_people)
+	for i := 0; i < num_people; i++ {
 		done = append(done, make(chan int))
 
 		go Wander(session, i, streets, done[i])
@@ -146,7 +146,8 @@ func main() {
 // a map of the nodes, an array of ways, and then a channel to report 
 // back over if/when it ever finishes (tip: as of now, it won't)
 func Wander(session *mgo.Session, num int, streets osm.Osm, done chan int) {
-	c := session.DB("test").C("people")
+	c := session.DB("megadroid").C("phones")
+    c.DropCollection()
 
 	// Pick a random way
 	whichway := uint(rand.Intn(len(streets.Ways)))
@@ -167,7 +168,7 @@ func Wander(session *mgo.Session, num int, streets osm.Osm, done chan int) {
 
 	for {
 		// Figure out what ways go through this node
-		intersect := osm.FindWays(streets.Ways, curr)
+		intersect := osm.FindWays(streets.Ways, p.OriginId)
 
 		// Pick one of these ways at random
 		whichway = uint(rand.Intn(len(intersect)))
@@ -178,7 +179,7 @@ func Wander(session *mgo.Session, num int, streets osm.Osm, done chan int) {
 		// Look through the list of nodes until we find the correct index
 		var startidx uint
 		for i, _ := range p.Way.Nodes {
-			if p.Way.Nodes[i] == curr {
+			if p.Way.Nodes[i] == p.OriginId {
 				startidx = uint(i)
 				break
 			}
@@ -227,7 +228,7 @@ func Wander(session *mgo.Session, num int, streets osm.Osm, done chan int) {
 				p.Current = *osm.NewNode(0, p.Current.Lat + p.LatSpeed, p.Current.Lon + p.LonSpeed)
 				_, err := c.Upsert(bson.M{"index": p.Index}, &DBPerson{p.Index, p.Current.Lat, p.Current.Lon}) 
 				if err != nil { panic(err) }
-				time.Sleep(1000000000)
+				time.Sleep(50000000)
 			}
 
 			startidx = nextidx
