@@ -8,6 +8,7 @@
 package main
 
 import (
+	"bufio"
 	"strconv"
 	"fmt"
 	"os"
@@ -15,9 +16,25 @@ import (
 	"rand"
 	"time"
 	"math"
+	"net"
 	"./osm"
+	"strings"
 	"launchpad.net/mgo"
 	"launchpad.net/gobson/bson"
+)
+
+var (
+	done	map[string]chan int
+	handlers	map[string]func(*net.TCPConn, []string)()
+	people	map[string]*Person
+	streets	osm.Osm
+	session	*mgo.Session
+)
+
+const (
+	STOP = iota
+	CONTINUE
+	PAUSE
 )
 
 /* These are the temporary structures into which the XML is parsed */
@@ -57,7 +74,7 @@ type Tag struct {
 
 // This is a representation of a single person. Probably sub-optimal.
 type Person struct {
-	Index	int		/* Which person is this? starts at 0 */
+	UID	string		/* Which android device is this? Should be unique.*/
 	Current	osm.Node	/* Our current location */
 	Speed	float64	/* speed in m/s */
 	LatSpeed	float64	/* degrees latitude per second */
@@ -71,7 +88,7 @@ type Person struct {
 // This is the representation of a Person that actually gets pushed to the database.
 // It's simple because we only really care about Latitude and Longitude
 type DBPerson struct {
-	Index	int
+	UID	string
 	Lat		float64
 	Lon		float64
 }
@@ -82,6 +99,7 @@ func ParseOSM(filename string) (result osm.Osm) {
 	if err != nil {
 		fmt.Println(err.String())
 	}
+	defer file.Close()
 
 	m := new(Osm)
 	err = xml.Unmarshal(file, m)
@@ -92,7 +110,6 @@ func ParseOSM(filename string) (result osm.Osm) {
 	result.Nodes = make(map[uint]osm.Node)	
 	for _, n := range m.Node {
 		id, _ := strconv.Atoui(n.Id)
-		fmt.Printf("found a node with id %s (%d)\n", n.Id, id)
 		lat, _ := strconv.Atof64(n.Lat)
 		lon, _ := strconv.Atof64(n.Lon)
 		t := osm.NewNode(id, lat, lon)
@@ -109,7 +126,6 @@ func ParseOSM(filename string) (result osm.Osm) {
 		for _, tag := range w.Tag {
 			if tag.K == "name" {
 				wtmp.Name = tag.V
-				fmt.Printf("name = %s\n", wtmp.Name)
 			}
 			if tag.K == "highway" {
 				wtmp.Type = tag.V
@@ -121,33 +137,141 @@ func ParseOSM(filename string) (result osm.Osm) {
 	return
 }
 
+func init() {
+	handlers = map[string]func(*net.TCPConn, []string)(){ "Tpos":HandlePos,
+											"Tstart":HandleStart,
+											"Tstop":HandleStop,
+											"Tpause":HandlePause,
+											"Tcontinue":HandleCont }
+
+	done = make(map[string]chan int)
+	people = make(map[string]*Person)
+}
+
 func main() {
-	streets := ParseOSM("test.osm")
+	var err os.Error
+	streets = ParseOSM(os.Args[1])
 
 	rand.Seed(time.Nanoseconds() % 1e9)
 
-	session, err := mgo.Mongo("localhost")
+	session, err = mgo.Mongo("localhost")
 	if err != nil { panic(err) } 
-
 	defer session.Close()
-    num_people := 50
-	done := make([]chan int, 1, num_people)
-	for i := 0; i < num_people; i++ {
-		done = append(done, make(chan int))
+	c := session.DB("megadroid").C("phones")
+	c.DropCollection()
 
-		go Wander(session, i, streets, done[i])
+	addr, _ := net.ResolveTCPAddr("tcp", ":4001")
+	l, err := net.ListenTCP("tcp", addr)
+	if err != nil { panic(err) }
+
+	for {
+		c, _ := l.AcceptTCP()
+		fmt.Printf("accepted call from %v\n", c.RemoteAddr())
+		go Handler(c)
 	}
-	<-done[0]
 }
 
+func readline(b *bufio.Reader) (p []byte, err os.Error) {
+	if p, err = b.ReadSlice('\n'); err != nil {
+		return nil, err;
+	}
+	var i int;
+	for i = len(p); i > 0; i-- {
+		if c := p[i-1]; c != '\r' && c != '\n' {
+			break;
+		}
+	}
+	return p[0:i], nil;
+}
+
+func HandleStart(c *net.TCPConn, args []string) () {
+	uid := args[0]
+
+	fmt.Printf("Creating new wanderer with ID = %v\n", uid)
+	if done[uid] == nil {
+		done[uid] = make(chan int)
+		pchan := make(chan *Person)
+		go Wander(session, uid, streets, pchan, done[uid])
+		people[uid] = <-pchan
+	}
+	fmt.Fprintf(c, "Rstart %s\n", uid)
+}
+
+func Rerror(c *net.TCPConn) {
+	fmt.Fprintf(c, "Rerror\n")
+}
+
+func HandlePos(c *net.TCPConn, args []string) () {
+	if args != nil {
+		db := session.DB("megadroid").C("phones")
+		fmt.Printf("arguments = %v\n", args)
+		uid := args[0]
+		result := &DBPerson{}
+		_ = db.Find(bson.M{"uid": uid}).One(&result)
+		fmt.Fprintf(c, "Rpos %s %f %f\n", result.UID, result.Lat, result.Lon)
+	} else {
+		Rerror(c)
+	}
+}
+
+func HandleStop(c *net.TCPConn, args []string) () {
+	if args != nil {
+		uid := args[0]
+		done[uid]<- STOP
+		fmt.Fprintf(c, "Rstop %s\n", uid)
+		done[uid] = nil
+		people[uid] = nil
+	} else {
+		Rerror(c)
+	}
+}
+
+func HandlePause(c *net.TCPConn, args []string) () {
+	if args != nil {
+		done[args[0]]<- PAUSE
+		fmt.Fprintf(c, "Rpause %s\n", args[0])
+	} else {
+		Rerror(c)
+	}
+}
+
+func HandleCont(c *net.TCPConn, args []string) () {
+	if args != nil {
+		done[args[0]]<- CONTINUE
+		fmt.Fprintf(c, "Rcontinue %s\n", args[0])
+	} else {
+		Rerror(c)
+	}
+}
+
+func Handler(c *net.TCPConn) {
+	br := bufio.NewReader(c)
+	defer c.Close()
+
+	for {
+		line, err := readline(br)
+		if err != nil { fmt.Print("exiting\n"); return }
+
+		fmt.Printf("read %#v\n", string(line))
+		tok := strings.Split(string(line), " ")
+		fmt.Printf("%#v\n", tok)
+
+		//handlers[tok[0]](tok[1:])
+		h := handlers[tok[0]]
+		if h != nil {
+			h(c, tok[1:])
+		} else {
+			fmt.Fprintf(c, "Rerror\n")
+		}
+	}
+}
 
 // This function expects an open session connected to a MongoDB server, 
 // a number (basically an index of this person, for logging purposes), 
 // a map of the nodes, an array of ways, and then a channel to report 
 // back over if/when it ever finishes (tip: as of now, it won't)
-func Wander(session *mgo.Session, num int, streets osm.Osm, done chan int) {
+func Wander(session *mgo.Session, uid string, streets osm.Osm, pchan chan *Person, done chan int) {
 	c := session.DB("megadroid").C("phones")
-    c.DropCollection()
 
 	// Pick a random way
 	whichway := uint(rand.Intn(len(streets.Ways)))
@@ -157,14 +281,16 @@ func Wander(session *mgo.Session, num int, streets osm.Osm, done chan int) {
 	tmp := uint(rand.Intn(len(w.Nodes)))
 	curr := w.Nodes[tmp]
 
-	fmt.Printf("#%d: selected way #%d out of %d, which is %v\n", num, whichway, len(streets.Ways), w.Name)
+	fmt.Printf("#%v: selected way #%d out of %d, which is %v\n", uid, whichway, len(streets.Ways), w.Name)
 
-	fmt.Printf("#%d: Standing on node #%d.\n", num, curr)
+	fmt.Printf("#%v: Standing on node #%d.\n", uid, curr)
 
 	p := new(Person)
 	p.OriginId = curr
 	p.Speed = 1.0
-	p.Index = num
+	p.UID = uid
+
+	pchan<- p
 
 	for {
 		// Figure out what ways go through this node
@@ -174,7 +300,7 @@ func Wander(session *mgo.Session, num int, streets osm.Osm, done chan int) {
 		whichway = uint(rand.Intn(len(intersect)))
 		p.Way = intersect[whichway]
 
-		fmt.Printf("#%d: taking %v\n", p.Index, p.Way.Name)
+		fmt.Printf("#%v: taking %v\n", p.UID, p.Way.Name)
 
 		// Look through the list of nodes until we find the correct index
 		var startidx uint
@@ -185,7 +311,7 @@ func Wander(session *mgo.Session, num int, streets osm.Osm, done chan int) {
 			}
 		}
 
-		fmt.Printf("#%d: our starting index in this way is %d, which points to node #%d\n", p.Index, startidx, p.Way.Nodes[startidx])
+		fmt.Printf("#%v: our starting index in this way is %d, which points to node #%d\n", p.UID, startidx, p.Way.Nodes[startidx])
 
 		// Set the current node
 		p.OriginId = p.Way.Nodes[startidx]
@@ -198,7 +324,7 @@ func Wander(session *mgo.Session, num int, streets osm.Osm, done chan int) {
 		p.DestinationId = p.Way.Nodes[destidx]
 
 		// How far away is that node?
-		fmt.Printf("#%d: selected node #%d, which is %v meters away\n", p.Index, p.DestinationId, osm.GetDist(streets.Nodes[p.OriginId], streets.Nodes[p.DestinationId]))
+		fmt.Printf("#%v: selected node #%d, which is %v meters away\n", p.UID, p.DestinationId, osm.GetDist(streets.Nodes[p.OriginId], streets.Nodes[p.DestinationId]))
 
 		// Move to that node!
 		nextidx := startidx
@@ -218,24 +344,43 @@ func Wander(session *mgo.Session, num int, streets osm.Osm, done chan int) {
 			p.UpdateLatLonSpeed(streets.Nodes[p.OriginId], streets.Nodes[p.WaypointId])
 			p.Current = *osm.NewNode(0, streets.Nodes[p.OriginId].Lat, streets.Nodes[p.OriginId].Lon)
 
-			_, err := c.Upsert(bson.M{"index": p.Index}, &DBPerson{p.Index, p.Current.Lat, p.Current.Lon}) 
+			_, err := c.Upsert(bson.M{"uid": p.UID}, &DBPerson{p.UID, p.Current.Lat, p.Current.Lon}) 
 			if err != nil { panic(err) }
 
-			fmt.Printf("#%d: Waypoint is %v meters away from our current node\n", p.Index, osm.GetDist(p.Current, streets.Nodes[p.WaypointId]))
+			fmt.Printf("#%v: Waypoint is %v meters away from our current node\n", p.UID, osm.GetDist(p.Current, streets.Nodes[p.WaypointId]))
 
 			for ; osm.GetDist(p.Current, streets.Nodes[p.WaypointId]) > p.Speed; {
-				fmt.Printf("#%d: location = %v by %v, This is %v meters from the waypoint\n", p.Index, p.Current.Lat, p.Current.Lon, osm.GetDist(p.Current, streets.Nodes[p.WaypointId]))
-				p.Current.Lat = p.Current.Lat + p.LatSpeed
-				p.Current.Lon = p.Current.Lon + p.LonSpeed
-				_, err := c.Upsert(bson.M{"index": p.Index}, &DBPerson{p.Index, p.Current.Lat, p.Current.Lon}) 
-				if err != nil { panic(err) }
-				time.Sleep(50000000)
+				select {
+				case verb := <-done:
+					if verb == STOP {
+						fmt.Printf("#%v: exiting\n", p.UID)
+						c.Remove(bson.M{"uid":p.UID})
+						return
+					} else if verb == PAUSE {
+						for {
+							verb = <-done
+							if verb == CONTINUE {
+								break
+							} else if verb == STOP {
+								fmt.Printf("#%v: exiting\n", p.UID)
+								return
+							}
+						}
+					}
+				default: 
+					fmt.Printf("#%v: location = %v by %v, This is %v meters from the waypoint\n", p.UID, p.Current.Lat, p.Current.Lon, osm.GetDist(p.Current, streets.Nodes[p.WaypointId]))
+					p.Current.Lat = p.Current.Lat + p.LatSpeed
+					p.Current.Lon = p.Current.Lon + p.LonSpeed
+					_, err := c.Upsert(bson.M{"uid": p.UID}, &DBPerson{p.UID, p.Current.Lat, p.Current.Lon}) 
+					if err != nil { panic(err) }
+					time.Sleep(50000000)
+				}
 			}
 
 			startidx = nextidx
 			p.OriginId = p.Way.Nodes[startidx]
 
-			fmt.Printf("#%d: Next waypoint set to #%d, which is %v meters from the destination\n\n", p.Index, p.Way.Nodes[nextidx], osm.GetDist(streets.Nodes[p.WaypointId], streets.Nodes[p.DestinationId]))
+			fmt.Printf("#%v: Next waypoint set to #%d, which is %v meters from the destination\n\n", p.UID, p.Way.Nodes[nextidx], osm.GetDist(streets.Nodes[p.WaypointId], streets.Nodes[p.DestinationId]))
 		}
 		fmt.Printf("\n**************\n")
 		// You must be tired, take a break!
