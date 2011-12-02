@@ -287,7 +287,7 @@ func Wander(session *mgo.Session, uid string, streets osm.Osm, pchan chan *Perso
 
 	p := new(Person)
 	p.OriginId = curr
-	p.Speed = 1.0
+	p.Speed = 5.0
 	p.UID = uid
 
 	pchan<- p
@@ -373,7 +373,7 @@ func Wander(session *mgo.Session, uid string, streets osm.Osm, pchan chan *Perso
 					p.Current.Lon = p.Current.Lon + p.LonSpeed
 					_, err := c.Upsert(bson.M{"uid": p.UID}, &DBPerson{p.UID, p.Current.Lat, p.Current.Lon}) 
 					if err != nil { panic(err) }
-					time.Sleep(50000000)
+					time.Sleep(1000000000)
 				}
 			}
 
