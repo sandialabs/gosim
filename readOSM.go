@@ -151,12 +151,17 @@ func NewPerson(uid string, n Node) (p Person) {
 }
 
 func (p *Person) Move(dist float64) {
+	var rdist float64 // remaining dist
+	rdist, p.bearing = p.loc.Distance(p.dest)
+	fmt.Printf("dist = %v, bearing = %v\n", rdist, p.bearing)
 	// what happens with zero value?
 	p.SetLoc(p.loc.Move(dist, p.bearing))
-	fmt.Printf("%#v\n", p)
-	// 1 meter accuracy
-	if dist, _ := p.loc.Distance(p.dest); dist < 1.0 {
+	// if we get within one time-period's worth of distance... assume we've made it.
+	if rdist, _ = p.loc.Distance(p.dest); rdist < dist {
 		p.loc = p.dest
+		// Decide where to go
+		p.SetWay(p.Loc().RandWay())
+		p.SetDest((p.Loc().RandWay()).RandNode())
 		// XXX: this needs to be setup in the way to allow it to pop a node
 //		p.dest = *p.way.Nodes()[0]
 //		p.way.Nodes()[1:]
@@ -200,7 +205,7 @@ func init() {
 	// person
 	newPerson = make(chan *Person)
 	people = make(map[string]*Person)
-	ticker := time.NewTicker(5e8)
+	ticker := time.NewTicker(1e8)
 	go func() {
 		for {
 			select {
@@ -209,7 +214,6 @@ func init() {
 				people[p.UID] = p
 				fmt.Printf("got a new person %v\n", p)
 			case <-ticker.C:
-				fmt.Printf("tick\n")
 				for _, p := range people {
 					// if person 
 					// average person (male) walks 1.56464 m/s
@@ -273,8 +277,8 @@ func HandleStart(c *net.TCPConn, args []string) () {
 
 	fmt.Printf("Creating new wanderer with ID = %v\n", uid)
 	p := NewPerson(uid, osm.RandNode())
-	p.SetWay(p.Loc().RandWay())
 	// Decide where to go
+	p.SetWay(p.Loc().RandWay())
 	p.SetDest((p.Loc().RandWay()).RandNode())
 	fmt.Printf("pushing %v down the pipe\n", p)
 	newPerson <- &p
