@@ -161,9 +161,6 @@ func (p *Person) Move(dist float64) {
 		// Decide where to go
 		p.SetWay(p.Loc().RandWay())
 		p.SetDest((p.Loc().RandWay()).RandNode())
-		// XXX: this needs to be setup in the way to allow it to pop a node
-//		p.dest = *p.way.Nodes()[0]
-//		p.way.Nodes()[1:]
 	}
 }
 
@@ -212,11 +209,12 @@ func init() {
 
 	randomizer = rand.New(rand.NewSource(time.Nanoseconds()))
 	geo = ellipsoid.Init("WGS84", ellipsoid.Degrees, ellipsoid.Meter, ellipsoid.Longitude_is_symmetric, ellipsoid.Bearing_is_symmetric)
-	// person
+
 	newPerson = make(chan *Person)
 	command = make(chan Command)
 	people = make(map[string]*Person)
 	ticker := time.NewTicker(1e9)
+
 	go func() {
 		for {
 			select {
@@ -241,9 +239,6 @@ func init() {
 					}
 				}
 				UpdatePeople()
-				// XXX: we should have some way to finish this
-				// case id := <-done:
-				// 	people[id] = nil, nil
 			}
 		}
 	}()
@@ -309,10 +304,16 @@ func Rerror(c *net.TCPConn) {
 	fmt.Fprintf(c, "Rerror\n")
 }
 
+// We need to talk to the database, unfortunately, because if we scale this up to multiple machines,
+// it's quite likely that the UID you're asking about will be simulated on a different computer
 func HandlePos(c *net.TCPConn, args []string) () {
 	if args != nil {
+		db := session.DB("megadroid").C("phones")
+		fmt.Printf("arguments = %v\n", args)
 		uid := args[0]
-		fmt.Fprintf(c, "Rpos %s %f %f\n", uid, people[uid].Loc().Lat, people[uid].Loc().Lon)
+		result := &DBPerson{}
+		_ = db.Find(bson.M{"uid": uid}).One(&result)
+		fmt.Fprintf(c, "Rpos %s %f %f\n", result.UID, result.Lat, result.Lon)
 	} else {
 		Rerror(c)
 	}
