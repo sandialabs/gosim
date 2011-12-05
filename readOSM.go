@@ -32,6 +32,7 @@ var (
 	randomizer *rand.Rand
 	geo ellipsoid.Ellipsoid
 	newPerson chan *Person
+	command chan Command
 )
 
 const (
@@ -39,6 +40,11 @@ const (
 	CONTINUE
 	PAUSE
 )
+
+type Command struct {
+	Command	int
+	UID			string
+}
 
 type Nd struct {
 	Ref int `xml:"attr"`
@@ -136,10 +142,11 @@ type Person struct {
 	dest	Node
 	bearing	float64
 	way	*Way
+	enabled bool
 }
 
 func NewPerson(uid string, n Node) (p Person) {
-	return Person{UID: uid, loc: n}
+	return Person{UID: uid, loc: n, enabled: true}
 }
 
 func (p *Person) Move(dist float64) {
@@ -187,7 +194,6 @@ type DBPerson struct {
 
 func UpdatePeople() {
 	if (session != nil) {
-		fmt.Printf("updating db\n")
 		c := session.DB("megadroid").C("phones")
 		for _, p := range people {
 			fmt.Printf("updating %v\n", p)
@@ -208,6 +214,7 @@ func init() {
 	geo = ellipsoid.Init("WGS84", ellipsoid.Degrees, ellipsoid.Meter, ellipsoid.Longitude_is_symmetric, ellipsoid.Bearing_is_symmetric)
 	// person
 	newPerson = make(chan *Person)
+	command = make(chan Command)
 	people = make(map[string]*Person)
 	ticker := time.NewTicker(1e9)
 	go func() {
@@ -217,13 +224,23 @@ func init() {
 				fmt.Printf("read %v off of the channel\n", p)
 				people[p.UID] = p
 				fmt.Printf("got a new person %v\n", p)
+			case c := <-command:
+				switch c.Command {
+				case PAUSE:
+					people[c.UID].enabled = false
+				case CONTINUE:
+					people[c.UID].enabled = true
+				case STOP:
+					people[c.UID] = nil, false
+				}
 			case <-ticker.C:
 				for _, p := range people {
-					// if person 
 					// average person (male) walks 1.56464 m/s
-					p.Move(1.56464)
+					if p.enabled == true {
+						p.Move(1.56464)
+					}
 				}
-				go UpdatePeople()
+				UpdatePeople()
 				// XXX: we should have some way to finish this
 				// case id := <-done:
 				// 	people[id] = nil, nil
@@ -304,8 +321,8 @@ func HandlePos(c *net.TCPConn, args []string) () {
 func HandleStop(c *net.TCPConn, args []string) () {
 	if args != nil {
 		uid := args[0]
+		command<- Command{STOP, uid}
 		fmt.Fprintf(c, "Rstop %s\n", uid)
-		people[uid] = nil
 	} else {
 		Rerror(c)
 	}
@@ -313,6 +330,8 @@ func HandleStop(c *net.TCPConn, args []string) () {
 
 func HandlePause(c *net.TCPConn, args []string) () {
 	if args != nil {
+		uid := args[0]
+		command<- Command{PAUSE, uid}
 		fmt.Fprintf(c, "Rpause %s\n", args[0])
 	} else {
 		Rerror(c)
@@ -321,6 +340,8 @@ func HandlePause(c *net.TCPConn, args []string) () {
 
 func HandleCont(c *net.TCPConn, args []string) () {
 	if args != nil {
+		uid := args[0]
+		command<- Command{CONTINUE, uid}
 		fmt.Fprintf(c, "Rcontinue %s\n", args[0])
 	} else {
 		Rerror(c)
