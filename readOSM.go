@@ -136,14 +136,6 @@ type Person struct {
 	dest	Node
 	bearing	float64
 	way	*Way
-//	Current	osm.Node	/* Our current location */
-//	Speed	float64	/* speed in m/s */
-//	LatSpeed	float64	/* degrees latitude per second */
-//	LonSpeed float64	/* degrees longitude per second */
-//	OriginId	uint		/* The ID of the origin in the list of nodes */
-//	WaypointId	uint	/* ID for the waypoint */
-//	DestinationId	uint	/* ID of the destination */
-//	Way		osm.Way	/* The way we're standing on right now */
 }
 
 func NewPerson(uid string, n Node) (p Person) {
@@ -193,6 +185,18 @@ type DBPerson struct {
 	Lon		float64
 }
 
+func UpdatePeople() {
+	if (session != nil) {
+		fmt.Printf("updating db\n")
+		c := session.DB("megadroid").C("phones")
+		for _, p := range people {
+			fmt.Printf("updating %v\n", p)
+			_, err := c.Upsert(bson.M{"uid": p.UID}, &DBPerson{p.UID, p.Loc().Lat, p.Loc().Lon}) 
+			if err != nil {panic(err)}
+		}
+	}
+}
+
 func init() {
 	handlers = map[string]func(*net.TCPConn, []string)(){ "Tpos":HandlePos,
 											"Tstart":HandleStart,
@@ -205,7 +209,7 @@ func init() {
 	// person
 	newPerson = make(chan *Person)
 	people = make(map[string]*Person)
-	ticker := time.NewTicker(1e8)
+	ticker := time.NewTicker(1e9)
 	go func() {
 		for {
 			select {
@@ -219,15 +223,13 @@ func init() {
 					// average person (male) walks 1.56464 m/s
 					p.Move(1.56464)
 				}
+				go UpdatePeople()
 				// XXX: we should have some way to finish this
 				// case id := <-done:
 				// 	people[id] = nil, nil
 			}
 		}
 	}()
-
-//	done = make(map[string]chan int)
-
 }
 
 func main() {
@@ -240,13 +242,13 @@ func main() {
 
 	osm, err = NewOsmXml(f)
 
-	rand.Seed(time.Nanoseconds() % 1e9)
-
 	session, err = mgo.Mongo("localhost")
 	if err != nil { panic(err) } 
 	defer session.Close()
 	c := session.DB("megadroid").C("phones")
 	c.DropCollection()
+
+	rand.Seed(time.Nanoseconds() % 1e9)
 
 	addr, _ := net.ResolveTCPAddr("tcp", ":4001")
 	l, err := net.ListenTCP("tcp", addr)
@@ -258,6 +260,8 @@ func main() {
 		go Handler(c)
 	}
 }
+
+// Functions after this point are used to handle the network protocol.
 
 func readline(b *bufio.Reader) (p []byte, err os.Error) {
 	if p, err = b.ReadSlice('\n'); err != nil {
@@ -280,14 +284,7 @@ func HandleStart(c *net.TCPConn, args []string) () {
 	// Decide where to go
 	p.SetWay(p.Loc().RandWay())
 	p.SetDest((p.Loc().RandWay()).RandNode())
-	fmt.Printf("pushing %v down the pipe\n", p)
 	newPerson <- &p
-//	if done[uid] == nil {
-//		done[uid] = make(chan int)
-//		pchan := make(chan *Person)
-//		go Wander(session, uid, streets, pchan, done[uid])
-//		people[uid] = <-pchan
-//	}
 	fmt.Fprintf(c, "Rstart %s\n", uid)
 }
 
@@ -297,12 +294,8 @@ func Rerror(c *net.TCPConn) {
 
 func HandlePos(c *net.TCPConn, args []string) () {
 	if args != nil {
-		db := session.DB("megadroid").C("phones")
-		fmt.Printf("arguments = %v\n", args)
 		uid := args[0]
-		result := &DBPerson{}
-		_ = db.Find(bson.M{"uid": uid}).One(&result)
-		fmt.Fprintf(c, "Rpos %s %f %f\n", result.UID, result.Lat, result.Lon)
+		fmt.Fprintf(c, "Rpos %s %f %f\n", uid, people[uid].Loc().Lat, people[uid].Loc().Lon)
 	} else {
 		Rerror(c)
 	}
@@ -311,9 +304,7 @@ func HandlePos(c *net.TCPConn, args []string) () {
 func HandleStop(c *net.TCPConn, args []string) () {
 	if args != nil {
 		uid := args[0]
-//		done[uid]<- STOP
 		fmt.Fprintf(c, "Rstop %s\n", uid)
-//		done[uid] = nil
 		people[uid] = nil
 	} else {
 		Rerror(c)
@@ -322,7 +313,6 @@ func HandleStop(c *net.TCPConn, args []string) () {
 
 func HandlePause(c *net.TCPConn, args []string) () {
 	if args != nil {
-//		done[args[0]]<- PAUSE
 		fmt.Fprintf(c, "Rpause %s\n", args[0])
 	} else {
 		Rerror(c)
@@ -331,7 +321,6 @@ func HandlePause(c *net.TCPConn, args []string) () {
 
 func HandleCont(c *net.TCPConn, args []string) () {
 	if args != nil {
-//		done[args[0]]<- CONTINUE
 		fmt.Fprintf(c, "Rcontinue %s\n", args[0])
 	} else {
 		Rerror(c)
@@ -346,11 +335,8 @@ func Handler(c *net.TCPConn) {
 		line, err := readline(br)
 		if err != nil { fmt.Print("exiting\n"); return }
 
-		//fmt.Printf("read %#v\n", string(line))
 		tok := strings.Split(string(line), " ")
-		//fmt.Printf("%#v\n", tok)
 
-		//handlers[tok[0]](tok[1:])
 		h := handlers[tok[0]]
 		if h != nil {
 			h(c, tok[1:])
