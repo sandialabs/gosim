@@ -41,10 +41,10 @@ A test OSM file is provided, called "test.osm". To run, simply do this:
 
 The simulator will read in the OSM file and wait. You can then connect to localhost:4001 and issue commands. The following commands (called "T-messages") are accepted:
 
-* Tstart <name>: start a new wandering person called <name>
-* Tstop <name>: stop the specified person and remove from the list.
-* Tpause <name>: pause the specified person.
-* Tcontinue <name>: resume movement for a paused person.
+	* Tstart <name>: start a new wandering person called <name>
+	* Tstop <name>: stop the specified person and remove from the list.
+	* Tpause <name>: pause the specified person.
+	* Tcontinue <name>: resume movement for a paused person.
 
 A successfully executed T-message will receive an R-message in reply; for example, sending "Tstart john" will cause the server to send back "Rstart john". An invalid command will return an Rerror.
 
