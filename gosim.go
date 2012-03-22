@@ -21,6 +21,9 @@ import (
 	"os"
 	"strings"
 	"time"
+	"encoding/json"
+	"io/ioutil"
+	"flag"
 )
 
 var (
@@ -33,6 +36,9 @@ var (
 	geo        ellipsoid.Ellipsoid
 	newPerson  chan *Person
 	command    chan Command
+
+	configpath	string	// location of the config file
+	config	Config
 )
 
 const (
@@ -40,6 +46,14 @@ const (
 	CONTINUE
 	PAUSE
 )
+
+type Config struct {
+        MongoServer    string
+        Database string // which database to use on Mongo
+        Collection       string // which collection within the database
+        ListenPort	string // the port to listen on for command connections
+}
+
 
 type Command struct {
 	Command int
@@ -200,7 +214,25 @@ func UpdatePeople() {
 	}
 }
 
+func ReadConfig(path string) (c Config) {
+        b, err := ioutil.ReadFile(path)
+        if err != nil {
+                fmt.Print(err)
+                panic("Couldn't read config file")
+        }
+
+        err = json.Unmarshal(b, &c)
+        if err != nil {
+                fmt.Print(err)
+                panic("Couldn't parse json")
+        }
+        return
+}
+
 func init() {
+	flag.StringVar(&configpath, "config", "./gosim.config", "Path to configuration file")
+	flag.Parse()
+
 	handlers = map[string]func(*net.TCPConn, []string){"Tpos": HandlePos,
 		"Tstart":    HandleStart,
 		"Tstop":     HandleStop,
@@ -214,6 +246,8 @@ func init() {
 	command = make(chan Command)
 	people = make(map[string]*Person)
 	ticker := time.NewTicker(1e9)
+
+	config = ReadConfig(configpath)
 
 	go func() {
 		for {
@@ -246,7 +280,7 @@ func init() {
 
 func main() {
 	var err error
-	f, err := os.Open(os.Args[1])
+	f, err := os.Open(flag.Arg(0))
 	defer f.Close()
 	if err != nil {
 		log.Fatal(err)
@@ -254,17 +288,17 @@ func main() {
 
 	osm, err = NewOsmXml(f)
 
-	session, err = mgo.Dial("localhost")
+	session, err = mgo.Dial(config.MongoServer)
 	if err != nil {
 		panic(err)
 	}
 	defer session.Close()
-	c := session.DB("megadroid").C("phones")
+	c := session.DB(config.Database).C(config.Collection)
 	c.DropCollection()
 
 	rand.Seed(time.Now().UnixNano() % 1e9)
 
-	addr, _ := net.ResolveTCPAddr("tcp", ":4001")
+	addr, _ := net.ResolveTCPAddr("tcp", ":" + config.ListenPort)
 	l, err := net.ListenTCP("tcp", addr)
 	if err != nil {
 		panic(err)

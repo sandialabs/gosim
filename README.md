@@ -15,7 +15,19 @@ You may need to download the external libraries:
 * launchpad.net/mgo
 * github.com/floren/ellipsoid
 
-You will need to be running mongodb locally--there is currently no configuration file, if you want to run Mongo elsewhere, you'll need to edit gosim.go.
+You will need to be running mongodb somewhere.
+
+Configuration
+--------------
+
+gosim.config contains a sample configuration. This should work fine if you're running mongodb on the local machine. Otherwise, you may need to tweak things. The following are the options which can be set:
+
+* MongoServer: The server running MongoDB.
+* Database: The name of the database to use on MongoDB
+* Collection: The name of the collection we will use inside the specified database
+* ListenPort: The local port where we will listen for incoming connections to control the simulation
+
+By default, gosim reads "gosim.config" in the current directory. To specify a different config, use the "--config" flag.
 
 Preparing an OSM file
 ----------------------
