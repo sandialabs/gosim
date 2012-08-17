@@ -203,7 +203,7 @@ type DBPerson struct {
 
 func UpdatePeople() {
 	if session != nil {
-		c := session.DB("megadroid").C("phones")
+		c := session.DB(config.Database).C(config.Collection)
 		for _, p := range people {
 			fmt.Printf("updating %v\n", p)
 			_, err := c.Upsert(bson.M{"uid": p.UID}, &DBPerson{p.UID, p.Loc().Lat, p.Loc().Lon})
@@ -346,7 +346,7 @@ func Rerror(c *net.TCPConn) {
 // it's quite likely that the UID you're asking about will be simulated on a different computer
 func HandlePos(c *net.TCPConn, args []string) {
 	if args != nil {
-		db := session.DB("megadroid").C("phones")
+		db := session.DB(config.Database).C(config.Collection)
 		fmt.Printf("arguments = %v\n", args)
 		uid := args[0]
 		result := &DBPerson{}
